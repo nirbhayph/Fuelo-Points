@@ -1,6 +1,7 @@
 package com.example.dhirenchandnani.fuelo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -31,7 +32,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+        LocationListener, GoogleMap.OnInfoWindowClickListener {
+    public final static String MARKER_TITLE = "TITLE";
+    public final static String MARKER_POSITION = "POSITION";
+    public final static String CURRENT_LOCATION = "LOCATION";
 
     private GoogleMap mMap;
     double latitude;
@@ -165,7 +169,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(MapsActivity.this,"Nearby Diesel Pumps", Toast.LENGTH_LONG).show();
             }
         });
+
+        //googleMap.setOnMarkerClickListener(this);
+
+        googleMap.setOnInfoWindowClickListener(this);
+
+
     }
+    @Override
+    public void onInfoWindowClick(Marker marker){
+        Intent mapintent = new Intent(this, MarkerInfoActivity.class);
+        mapintent.putExtra(CURRENT_LOCATION,mLastLocation);
+        mapintent.putExtra(MARKER_TITLE,marker.getTitle());
+        mapintent.putExtra(MARKER_POSITION,marker.getPosition());
+        startActivity(mapintent);
+    }
+
+
+
+//    @Override
+//    public boolean onMarkerClick(final Marker marker) {
+//        Intent mapintent = new Intent(this, MarkerInfoActivity.class);
+//        mapintent.putExtra("Title",marker.getTitle());
+//        startActivity(mapintent);
+//
+//        return true;
+//    }
 
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)    //used to configure client.
