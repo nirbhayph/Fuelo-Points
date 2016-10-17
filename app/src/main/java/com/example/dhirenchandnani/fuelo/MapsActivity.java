@@ -40,6 +40,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     double latitude;
     double longitude;
+    static double lati = 0.0;
+    static double longi = 0.0;
     String type = "gas_station";
     private int PROXIMITY_RADIUS = 4000;
     GoogleApiClient mGoogleApiClient;
@@ -119,7 +121,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
-                mMap.clear();   //clear the map
+                /* mMap.clear(); */   //clear the map
                 String url = getUrl(latitude, longitude, Petrol);   //used to get information about nearby places
                 Object[] DataTransfer = new Object[2];
                 DataTransfer[0] = mMap;
@@ -137,7 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
-                mMap.clear();
+
                 String url = getUrl(latitude, longitude, Cng);
                 Object[] DataTransfer = new Object[2];
                 DataTransfer[0] = mMap;
@@ -155,7 +157,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
-                mMap.clear();
+
                 if (mCurrLocationMarker != null) {
                     mCurrLocationMarker.remove();
                 }
@@ -222,9 +224,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
+       // googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
         googlePlacesUrl.append("&type=" + type);
         googlePlacesUrl.append("&name=" + nearbyPlace);
+        googlePlacesUrl.append("&rankby=distance");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyAL2hnUzJjnYPMf4_yrJCoKpYD_MvHdxlI");
         Log.d("getUrl", googlePlacesUrl.toString());
@@ -248,11 +251,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Place current location marker
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        lati = latitude;
+        longi = longitude;
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera

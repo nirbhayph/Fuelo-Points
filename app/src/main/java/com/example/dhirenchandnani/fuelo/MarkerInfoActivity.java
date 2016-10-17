@@ -315,7 +315,25 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
                 }
 
                 // Adding all the points in the route to LineOptions
+
+
                 lineOptions.addAll(points);
+
+                List<LatLng> latlngs = lineOptions.getPoints();
+                int size = latlngs.size() - 1;
+                float[] results = new float[1];
+                float sum = 0;
+
+                for(int p = 0; p < size; p++){
+                    Location.distanceBetween(
+                            latlngs.get(p).latitude,
+                            latlngs.get(p).longitude,
+                            latlngs.get(p+1).latitude,
+                            latlngs.get(p+1).longitude,
+                            results);
+                    sum += results[0];
+                }
+                Log.d("Distance",sum+"");
                 lineOptions.width(10);
                 lineOptions.color(Color.RED);
 

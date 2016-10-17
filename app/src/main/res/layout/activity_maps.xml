@@ -16,25 +16,35 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="#fff">
 
         <Button
             android:id="@+id/btnPetrol"
-            android:layout_width="wrap_content"
+            android:layout_width="129dp"
             android:layout_height="wrap_content"
-            android:text="Petrol pumps near me" />
+            android:text="Petrol pumps near me"
+            android:background="@drawable/customborder"
+            android:textColor="#607d8b"/>
 
         <Button
             android:id="@+id/btnCng"
-            android:layout_width="wrap_content"
+            android:layout_width="116dp"
             android:layout_height="wrap_content"
-            android:text="CNG Pumps near me" />
+            android:text="CNG Pumps near me"
+            android:background="@drawable/customborder"
+            android:textColor="#607d8b"/>
 
         <Button
             android:id="@+id/btnDiesel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Diesel pumps near me" />
+            android:text="Diesel pumps near me"
+            android:background="@drawable/customborder"
+            android:textColor="#607d8b"
+
+            />
 
     </LinearLayout>
 </FrameLayout>
