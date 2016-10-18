@@ -3,6 +3,8 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
     <fragment android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Petrol pumps near me"
             android:background="@drawable/customborder"
-            android:textColor="#607d8b"/>
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/btnCng"
@@ -34,17 +36,27 @@
             android:layout_height="wrap_content"
             android:text="CNG Pumps near me"
             android:background="@drawable/customborder"
-            android:textColor="#607d8b"/>
+
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/btnDiesel"
-            android:layout_width="wrap_content"
+            android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:text="Diesel pumps near me"
             android:background="@drawable/customborder"
-            android:textColor="#607d8b"
-
-            />
+            android:textColor="#fff"/>
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_photo_camera_white_24dp"
+        app:backgroundTint="#1b5e20"/>
+
 </FrameLayout>
