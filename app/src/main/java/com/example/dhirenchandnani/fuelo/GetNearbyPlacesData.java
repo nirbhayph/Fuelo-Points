@@ -3,25 +3,33 @@ package com.example.dhirenchandnani.fuelo;
 /**
  * Created by Dhiren Chandnani on 03-10-2016.
  */
+import android.content.Context;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
+public class GetNearbyPlacesData extends  AsyncTask<Object, String, String> {
 
     String googlePlacesData;
     GoogleMap mMap;
     String url;
     float[] results = new float[1];
+
     @Override
     protected String doInBackground(Object... params) {
         try {
@@ -60,15 +68,19 @@ public class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
             String vicinity = googlePlace.get("vicinity");
             LatLng latLng = new LatLng(lat, lng);
             markerOptions.position(latLng);
-            markerOptions.title(placeName + " : " + vicinity);
+            markerOptions.title(placeName);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
             mMap.addMarker(markerOptions);
 
-            //move map camera
+
+
+
 
 
 
         }
+
 
         Location.distanceBetween(
                 Double.parseDouble(nearbyPlacesList.get(2).get("lat")),
@@ -97,7 +109,15 @@ public class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
             mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
 
+
+
+
     }
+
+
+
+
+
 
 
 //    private String getdis(double latitude, double longitude, double dest_lat, double dest_lon) {

@@ -3,6 +3,7 @@ package com.example.dhirenchandnani.fuelo;
 import android.content.Intent;
 import android.location.Location;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -65,6 +66,10 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    String marker_title;
+    LatLng marker_position;
+    Location current_location;
+    String DistBet="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +78,13 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 
         Intent intent = getIntent();
 
-        final String marker_title = intent.getStringExtra(MapsActivity.MARKER_TITLE);
+        marker_title = intent.getStringExtra(MapsActivity.MARKER_TITLE);
         //String marker_position = intent.getStringExtra(MapsActivity.MARKER_POSITION);
-        final LatLng marker_position = intent.getExtras().getParcelable(MapsActivity.MARKER_POSITION);
+        marker_position = intent.getExtras().getParcelable(MapsActivity.MARKER_POSITION);
         //String current_location = intent.getStringExtra(MapsActivity.CURRENT_LOCATION);
-        final Location current_location = intent.getExtras().getParcelable(MapsActivity.CURRENT_LOCATION);
-
+        current_location = intent.getExtras().getParcelable(MapsActivity.CURRENT_LOCATION);
+        DistBet = intent.getStringExtra(MapsActivity.Dist_Bet);
+        Log.d("Distance Instance", DistBet);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -90,43 +96,51 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
                 .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
 
-        TextView textView = new TextView(this);
-        textView.setTextSize(20);
-        textView.setText("Destination: "+marker_title);
+        TextView textView = (TextView)findViewById(R.id.pump_dest_Addr);
+        textView.setText("Destination: "+ marker_title);
 
         ViewGroup layout = (ViewGroup) findViewById(R.id.marker_info);
         layout.addView(textView);
 
-        final Button btnLetsGo = (Button) findViewById(R.id.btnLG);
-        btnLetsGo.setOnClickListener(new View.OnClickListener() {
-            @Override
 
 
-            public void onClick(View v) {
 
-                String url = getUrl(current_location, marker_position);
-                Log.d("onMapClick", url.toString());
-                FetchUrl FetchUrl = new FetchUrl();
 
-                // Start downloading json data from Google Directions API
-                FetchUrl.execute(url);
-                //move map camera
-                LatLng origin = new LatLng(current_location.getLatitude(),current_location.getLongitude());
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
-                MarkerOptions source = new MarkerOptions();
-                LatLng latLng = new LatLng(current_location.getLatitude(),current_location.getLongitude());
-                source.position(latLng);
-                mMap.addMarker(source);
-                MarkerOptions dest = new MarkerOptions();
-                dest.position(marker_position);
-                dest.title(marker_title);
-                mMap.addMarker(dest);
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
 
-                btnLetsGo.setVisibility(View.GONE);
-            }
-        });
+
+//        final View btnLetsGo = (Button) findViewById(R.id.btnLG);
 //        btnLetsGo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//
+//
+//            public void onClick(View v) {
+//
+//                String url = getUrl(current_location, marker_position);
+//                Log.d("onMapClick", url.toString());
+//                FetchUrl FetchUrl = new FetchUrl();
+//
+//                // Start downloading json data from Google Directions API
+//                FetchUrl.execute(url);
+//                //move map camera
+//                LatLng origin = new LatLng(current_location.getLatitude(),current_location.getLongitude());
+//                mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
+//                MarkerOptions source = new MarkerOptions();
+//                LatLng latLng = new LatLng(current_location.getLatitude(),current_location.getLongitude());
+//                source.position(latLng);
+//                mMap.addMarker(source);
+//                MarkerOptions dest = new MarkerOptions();
+//                dest.position(marker_position);
+//                dest.title(marker_title);
+//                mMap.addMarker(dest);
+//                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+//
+//                btnLetsGo.setVisibility(View.GONE);
+//            }
+//        });
+//
+//
+//
+// btnLetsGo.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                Uri gmmIntentUri = Uri.parse("google.navigation:q="+marker_position.latitude+","+marker_position.longitude);
@@ -144,12 +158,54 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 //                "com.google.android.maps.MapsActivity");
 //        startActivity(intent);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                Intent intent = new Intent(MarkerInfoActivity.this, MarkerInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        String url = getUrl(current_location, marker_position);
+        Log.d("onMapClick", url.toString());
+        FetchUrl FetchUrl = new FetchUrl();
+
+        // Start downloading json data from Google Directions API
+        FetchUrl.execute(url);
+        //move map camera
+        LatLng origin = new LatLng(current_location.getLatitude(),current_location.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
+        MarkerOptions source = new MarkerOptions();
+        LatLng latLng = new LatLng(current_location.getLatitude(),current_location.getLongitude());
+        source.position(latLng);
+        mMap.addMarker(source);
+        MarkerOptions dest = new MarkerOptions();
+        dest.position(marker_position);
+        dest.title(marker_title);
+        mMap.addMarker(dest);
+        //mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
+        Log.d("Distance Between" ,DistBet);
+        int zoomDist = (int)Float.parseFloat(DistBet);
+        if(zoomDist<1128)
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        else if((zoomDist>1128)&&(zoomDist<2256))
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+        else if((zoomDist>2256)&&(zoomDist<4513))
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        else if((zoomDist>4513)&&(zoomDist<9027))
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        else if((zoomDist>9027)&&(zoomDist<18055))
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
       //  Initialize Google Play Services
 //        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

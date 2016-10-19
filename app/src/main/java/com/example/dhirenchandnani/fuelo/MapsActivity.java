@@ -1,8 +1,10 @@
 package com.example.dhirenchandnani.fuelo;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,8 +13,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -30,6 +36,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DecimalFormat;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -37,6 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public final static String MARKER_TITLE = "TITLE";
     public final static String MARKER_POSITION = "POSITION";
     public final static String CURRENT_LOCATION = "LOCATION";
+    public final static String Dist_Bet = "DB";
 
     private GoogleMap mMap;
     double latitude;
@@ -49,6 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    public Marker mar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Click action
-                Intent intent = new Intent(MapsActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private boolean CheckGooglePlayServices() {
@@ -110,6 +112,55 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                final Button b = (Button) findViewById(R.id.btnLG);
+                b.setVisibility(Button.GONE);
+            }
+        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(final Marker marker) {
+                final float[] results = new float[1];
+                Location.distanceBetween(
+                        (marker.getPosition().latitude),
+                        (marker.getPosition().longitude),
+                        MapsActivity.lati,
+                        MapsActivity.longi,
+                        results);
+                final float f = results[0]/1000;
+                DecimalFormat df = new DecimalFormat("#.00");
+                marker.setSnippet(df.format(f) +"km");
+                marker.showInfoWindow();
+                Toast.makeText(MapsActivity.this,"MARKER CLICKED",Toast.LENGTH_SHORT).show();
+
+                final Button b = (Button) findViewById(R.id.btnLG);
+                b.setVisibility(Button.VISIBLE);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent mapintent = new Intent(MapsActivity.this, MarkerInfoActivity.class);
+                        mapintent.putExtra(CURRENT_LOCATION,mLastLocation);
+                        mapintent.putExtra(MARKER_TITLE,marker.getTitle());
+                        mapintent.putExtra(MARKER_POSITION,marker.getPosition());
+                        mapintent.putExtra(Dist_Bet,results[0]+"");
+                        startActivity(mapintent);
+                    }
+                });
+
+
+
+
+
+                return true;
+            }
+
+        });
+
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -179,16 +230,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("onClick", url);
                 GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(MapsActivity.this,"Nearby Diesel Pumps", Toast.LENGTH_LONG).show();
+                Toast.makeText(MapsActivity.this,"Nearby Diesel Pumps", Toast.LENGTH_SHORT).show();
             }
         });
 
         //googleMap.setOnMarkerClickListener(this);
 
-        googleMap.setOnInfoWindowClickListener(this);
+        //googleMap.setOnInfoWindowClickListener(this);
 
 
     }
+
+
     @Override
     public void onInfoWindowClick(Marker marker){
         Intent mapintent = new Intent(this, MarkerInfoActivity.class);
@@ -357,4 +410,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // add here other case statements according to your requirement.
         }
     }
+
+
 }
