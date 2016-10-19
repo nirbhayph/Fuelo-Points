@@ -10,19 +10,22 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="56dp"
         android:background="#00ff00"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Timer will start once y;"
+        android:text="THE ADDRESS"
         android:id="@+id/pump_dest_Addr"
         android:gravity="top|center"
         android:textColor="#111"
 
 
  />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <fragment
             android:layout_width="match_parent"
