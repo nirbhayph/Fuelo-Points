@@ -56,7 +56,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.example.dhirenchandnani.fuelo.CameraActivity.REQUEST_IMAGE_CAPTURE;
+import static com.example.dhirenchandnani.fuelo.ViewFormActivity.REQUEST_IMAGE_CAPTURE;
 
 public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -107,18 +107,28 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 
 
 
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button ED = (Button)findViewById(R.id.enterDetails);
+        ED.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Click action
-                Intent intent2 = new Intent(MarkerInfoActivity.this, CameraActivity.class);
-                startActivity(intent2);
+                Intent intent6 = new Intent(MarkerInfoActivity.this, FormActivity.class);
+                startActivity(intent6);
             }
         });
+
+
+
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+//
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Click action
+//                Intent intent2 = new Intent(MarkerInfoActivity.this, CameraActivity.class);
+//                startActivity(intent2);
+//            }
+//        });
 
     }
 

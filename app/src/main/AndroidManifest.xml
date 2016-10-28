@@ -50,7 +50,9 @@
         </activity>
 
         <activity android:name=".MarkerInfoActivity"></activity>
-        <activity android:name=".CameraActivity"></activity>
+
+        <activity android:name=".FormActivity"></activity>
+        <activity android:name=".ViewFormActivity"></activity>
 
     </application>
 
