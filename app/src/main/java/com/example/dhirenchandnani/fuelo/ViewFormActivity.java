@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ public class ViewFormActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView iv_photo;
 
-    String billNo = "", petrolAmnt = "", date = "", time = "";
+    String billNo = "", petrolAmnt = "", date = "", time = "", nol="";
 
 
     @Override
@@ -35,6 +36,7 @@ public class ViewFormActivity extends AppCompatActivity {
         petrolAmnt = intent3.getStringExtra(FormActivity.PA);
         date = intent3.getStringExtra(FormActivity.Date);
         time = intent3.getStringExtra(FormActivity.Time);
+        nol = intent3.getStringExtra(FormActivity.Litres);
 
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -56,11 +58,13 @@ public class ViewFormActivity extends AppCompatActivity {
         TextView bn = (TextView) findViewById(R.id.bnView);
         TextView v_date = (TextView) findViewById(R.id.dateView);
         TextView v_time = (TextView) findViewById(R.id.timeView);
+        TextView v_nol = (TextView) findViewById(R.id.v_nol);
 
         bn.setText(" " + billNo);
         v_date.setText(" " + date);
         v_time.setText(" " + time);
         pa.setText(" " + petrolAmnt);
+        v_nol.setText(" " + nol);
 
     }
 
@@ -82,4 +86,9 @@ public class ViewFormActivity extends AppCompatActivity {
         return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
+
+    public void uploadDetails(View view){
+        new SendDataActivity(this).execute(billNo,petrolAmnt,date,time,nol,"http://google.com");
+
+    }
 }

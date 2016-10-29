@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GetNearbyPlacesData extends  AsyncTask<Object, String, String> {
 
@@ -74,7 +75,7 @@ public class GetNearbyPlacesData extends  AsyncTask<Object, String, String> {
             mMap.addMarker(markerOptions);
 
 
-
+            
 
 
 
@@ -107,6 +108,8 @@ public class GetNearbyPlacesData extends  AsyncTask<Object, String, String> {
             mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         else if((zoomDist>9027)&&(zoomDist<18055))
             mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        else
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
 
 
 

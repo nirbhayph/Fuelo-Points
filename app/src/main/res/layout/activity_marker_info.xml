@@ -10,7 +10,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="45dp"
         android:background="#00ff00"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="THE ADDRESS"

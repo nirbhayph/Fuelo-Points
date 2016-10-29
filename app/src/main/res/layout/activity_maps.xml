@@ -25,7 +25,8 @@
 
         <Button
             android:id="@+id/btnPetrol"
-            android:layout_width="129dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Petrol pumps near me"
             android:background="@drawable/customborder"
@@ -33,7 +34,8 @@
 
         <Button
             android:id="@+id/btnCng"
-            android:layout_width="116dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="CNG Pumps near me"
             android:background="@drawable/customborder"
@@ -42,7 +44,8 @@
 
         <Button
             android:id="@+id/btnDiesel"
-            android:layout_width="131dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Diesel pumps near me"
             android:background="@drawable/customborder"

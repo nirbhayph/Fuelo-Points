@@ -23,6 +23,7 @@ public class FormActivity extends AppCompatActivity {
     public static final String BN="BN";
     public static final String Date="Date";
     public static final String Time="Time";
+    public static final String Litres="Litres";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,6 +35,7 @@ public class FormActivity extends AppCompatActivity {
         final EditText form_petrol_amount = (EditText)findViewById(R.id.petrolAmnt);
         final EditText form_date = (EditText)findViewById(R.id.editText3);
         final EditText form_time = (EditText)findViewById(R.id.editText4);
+        final EditText form_nol = (EditText)findViewById(R.id.nOL);
 
         SimpleDateFormat dateF = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
         SimpleDateFormat timeF = new SimpleDateFormat("hh:mm", Locale.getDefault());
@@ -51,12 +53,14 @@ public class FormActivity extends AppCompatActivity {
                                      String n_time = form_time.getText().toString();
                                      String bn = form_BNo.getText().toString();
                                      String pa = form_petrol_amount.getText().toString();
+                                     String noL = form_nol.getText().toString();
 
                                      Intent intent2 = new Intent(FormActivity.this, ViewFormActivity.class);
                                      intent2.putExtra(PA, pa);
                                      intent2.putExtra(BN,bn);
                                      intent2.putExtra(Date,n_date);
                                      intent2.putExtra(Time,n_time);
+                                     intent2.putExtra(Litres,noL);
                                      startActivity(intent2);
                                  }
                              });
