@@ -41,7 +41,7 @@
                 android:background="#c32026"
                 android:textColor="#fff"
                 android:layout_marginTop="20dp"
-                android:onClick="registerPost"
+                android:onClick="registerUser"
 
                 />
 
@@ -60,7 +60,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/eventname_reg"
+                android:id="@+id/name_reg"
                 android:textColor="#fff"
                 android:theme="@style/MyEditTextTheme"
                 />
@@ -77,7 +77,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/venuename_reg"
+                android:id="@+id/email_reg"
                 android:textColor="#fff"
                 android:theme="@style/MyEditTextTheme"
 
