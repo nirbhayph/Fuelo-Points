@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -30,6 +31,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.example.dhirenchandnani.fuelo.FormActivity.resultsMain;
+import static com.example.dhirenchandnani.fuelo.R.id.spinner;
 
 /**
  * Created by Dhiren Chandnani on 21-10-2016.
@@ -37,17 +39,56 @@ import static com.example.dhirenchandnani.fuelo.FormActivity.resultsMain;
 public class FormActivity extends AppCompatActivity implements SpinnerDetails.AsyncResponse {
 
 
-
+    Spinner spinner;
     public static final String PA="PA";
     public static final String BN="BN";
     public static final String Date="Date";
     public static final String Time="Time";
     public static final String Litres="Litres";
     public static final String CAR="Cars";
-    public static String resultsMain;
-    public static String[] results,results1,results2;
+    public static String resultsMain = "DC_KT";
+    public static String[] results,results1,results2, results3;
+
+
+    @Override
+    public void processFinish(String result){
+
+        if(result != null && !result.isEmpty()){
+//            results = result.split("/// ///");
+//            results1 = results[0].split("///");
+//            results2 = results[1].split("///");
+
+
+//            if(results1[0].trim().equals("Success")) {
+//                Log.e("check2",results1[0]);
+//            results1 = Arrays.copyOfRange(results1,1,results1.length);
+//             LoginActivity.userid = results[1];
+
+//             Log.d("RESULTSMAIN",resultsMain);
+//               }
+
+
+        }
+        else{
+            Toast toast= Toast.makeText(this, "Unable to connect to the server!", Toast.LENGTH_SHORT);
+            toast.setMargin(150,150);
+            toast.show();
+        }
+
+        Log.d("OPOPOPOP",result);
+        FormActivity.resultsMain = result;
+        Log.d("RESULTSMAIN",resultsMain);
+        Log.d("RESULTSMAIN2", FormActivity.resultsMain);
+
+        PopulateSpinner();
+        //Here you will receive the result fired from async class
+        //of onPostExecute(result) method.
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         new SpinnerDetails(this).execute();
 
@@ -63,11 +104,8 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
 
 //        new SpinnerDetails(this).execute();
 
-        final Spinner spinner = (Spinner)findViewById(R.id.spinner);
-//         Log.d("SPINNER-----",resultsMain);
-//        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,resultsMain); //selected item will look like a spinner set from XML
-//        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(spinnerArrayAdapter);
+
+
 
 
         SimpleDateFormat dateF = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
@@ -105,37 +143,28 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
 
     }
 
-    @Override
-    public void processFinish(String result){
+    public void PopulateSpinner() {
 
-        if(result != null && !result.isEmpty()){
-//            results = result.split("/// ///");
-//            results1 = results[0].split("///");
-//            results2 = results[1].split("///");
+        spinner = (Spinner)findViewById(R.id.spinner);
+        Log.d("SPINNER-----",resultsMain);
+        results = resultsMain.split("@@@@");
+        results1 = results[1].split(" ");
+        results2 = results1[0].split("///");
+        results3 = results1[1].split("///");
+//        results1 = Arrays.copyOfRange(results1,1,results1.length);
 
-//
-//            if(results1[0].trim().equals("Success")) {
-//                Log.e("check2",results1[0]);
-                //results1 = Arrays.copyOfRange(results1,1,results1.length);
-               // LoginActivity.userid = results[1];
-
-               // Log.d("RESULTSMAIN",resultsMain);
-         //   }
-
-        }
-        else{
-            Toast toast= Toast.makeText(this, "Unable to connect to the server!", Toast.LENGTH_SHORT);
-            toast.setMargin(150,150);
-            toast.show();
-        }
-
-        Log.d("OPOPOPOP",result);
-        FormActivity.resultsMain = result;
-        Log.d("RESULTSMAIN",resultsMain);
-        Log.d("RESULTSMAIN2", FormActivity.resultsMain);
-        //Here you will receive the result fired from async class
-        //of onPostExecute(result) method.
+       Log.d("RESULTS:",results1[0]+"---"+results1[1]);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,results2); //selected item will look like a spinner set from XML
+        Log.d("AA WORKING","+");
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Log.d("SAA workingin","+");
+        spinner.setAdapter(spinnerArrayAdapter);
+        Log.d("Last line run","-");
     }
+
+
+
+
 
 
 }
