@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    static String userid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

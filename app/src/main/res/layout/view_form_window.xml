@@ -8,19 +8,6 @@
         android:textSize="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:id="@+id/bnView"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:text="TextView"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView8"
         android:layout_toRightOf="@+id/textView8"
         android:layout_toEndOf="@+id/textView8"
@@ -48,19 +35,6 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />
 
-    <TextView
-        android:text="Bill No:"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/dateView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,37 +46,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true" />
 
-    <TextView
-        android:text="Petrol Amount:"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:layout_above="@+id/imageView5"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginBottom="21dp" />
-
-    <TextView
-        android:text="No. of Litres:"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/bnView"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
-
-    <TextView
-        android:text="TextView"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bnView"
-        android:layout_toRightOf="@+id/textView8"
-        android:layout_toEndOf="@+id/textView8"
-        android:id="@+id/v_nol" />
-
     <Button
         android:text="Upload"
         android:layout_width="wrap_content"
@@ -112,6 +55,79 @@
         android:layout_alignStart="@+id/bnView"
         android:id="@+id/uplBtn"
         android:onClick="uploadDetails"/>
+
+    <TextView
+        android:text="Car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:id="@+id/textView10"
+        android:layout_below="@+id/paView"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8" />
+
+    <TextView
+        android:text="Petrol Amount:"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:text="Bill No:"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:layout_below="@+id/dateView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="No. of Litres:"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bnView"
+        android:layout_below="@+id/timeView"
+        android:layout_alignLeft="@+id/timeView"
+        android:layout_alignStart="@+id/timeView" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/v_nol"
+        android:layout_above="@+id/paView"
+        android:layout_alignLeft="@+id/paView"
+        android:layout_alignStart="@+id/paView" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/carView"
+        android:layout_below="@+id/paView"
+        android:layout_alignLeft="@+id/paView"
+        android:layout_alignStart="@+id/paView" />
 
 
 </RelativeLayout>

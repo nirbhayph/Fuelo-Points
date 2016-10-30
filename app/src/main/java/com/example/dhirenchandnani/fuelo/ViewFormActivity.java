@@ -21,7 +21,7 @@ public class ViewFormActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView iv_photo;
 
-    String billNo = "", petrolAmnt = "", date = "", time = "", nol="";
+    String billNo = "", petrolAmnt = "", date = "", time = "", nol="",carV="";
 
 
     @Override
@@ -37,6 +37,7 @@ public class ViewFormActivity extends AppCompatActivity {
         date = intent3.getStringExtra(FormActivity.Date);
         time = intent3.getStringExtra(FormActivity.Time);
         nol = intent3.getStringExtra(FormActivity.Litres);
+        carV = intent3.getStringExtra(FormActivity.CAR);
 
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -59,12 +60,15 @@ public class ViewFormActivity extends AppCompatActivity {
         TextView v_date = (TextView) findViewById(R.id.dateView);
         TextView v_time = (TextView) findViewById(R.id.timeView);
         TextView v_nol = (TextView) findViewById(R.id.v_nol);
+        TextView carView = (TextView) findViewById(R.id.carView);
+
 
         bn.setText(" " + billNo);
         v_date.setText(" " + date);
         v_time.setText(" " + time);
         pa.setText(" " + petrolAmnt);
         v_nol.setText(" " + nol);
+        carView.setText(""+carV);
 
     }
 

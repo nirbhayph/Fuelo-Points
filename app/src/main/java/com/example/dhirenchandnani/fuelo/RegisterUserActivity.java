@@ -102,11 +102,15 @@ public class RegisterUserActivity  extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result){
         am.dismiss();
+        String[] results;
 
         if(result != null && !result.isEmpty()){
-            if(result.equals("Success")) {
+            results = result.split("@@@@");
+            if(results[0].equals("Success")) {
+                LoginActivity.userid = results[1];
                 Intent intent = new Intent(this.context, LoginActivity.class);
                 this.context.startActivity(intent);
+
             }
             Toast toast= Toast.makeText(this.context, "Registered Successfully!", Toast.LENGTH_SHORT);
             toast.setMargin(150,150);

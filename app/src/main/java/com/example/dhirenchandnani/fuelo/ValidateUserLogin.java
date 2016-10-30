@@ -98,13 +98,15 @@ public class ValidateUserLogin  extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result){
         am.dismiss();
+        String[] results;
 
         if(result != null && !result.isEmpty()){
+            results = result.split("@@@@");
 
 
-            if(result.trim().equals("Success")) {
-                Log.e("check2",result);
-
+            if(results[0].trim().equals("Success")) {
+                Log.e("check2",results[0]);
+                LoginActivity.userid = results[1];
                 Intent intent = new Intent(this.context, MapsActivity.class);
                 this.context.startActivity(intent);
 
