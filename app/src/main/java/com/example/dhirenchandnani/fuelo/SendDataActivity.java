@@ -58,7 +58,9 @@ public class SendDataActivity  extends AsyncTask<String,Void,String> {
             String date = (String)arg0[2];
             String time = (String)arg0[3];
             String noL = (String)arg0[4];
-            String photo = (String)arg0[5];
+            String user_id = (String)arg0[5];
+            String car_name = (String)arg0[6];
+            String photo = (String)arg0[7];
 
             String link="http://109.73.164.163/FueloPoints/server_files/insert_client_bill_detail.php";
             String data  = URLEncoder.encode("billnox", "UTF-8") + "=" + URLEncoder.encode(bNo, "UTF-8");
@@ -67,8 +69,8 @@ public class SendDataActivity  extends AsyncTask<String,Void,String> {
             data += "&" + URLEncoder.encode("timex", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8");
             data += "&" + URLEncoder.encode("ltrsx", "UTF-8") + "=" + URLEncoder.encode(noL, "UTF-8");
             data += "&" + URLEncoder.encode("linkx", "UTF-8") + "=" + URLEncoder.encode(photo, "UTF-8");
-
-
+            data += "&" + URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(user_id, "UTF-8");
+            data += "&" + URLEncoder.encode("car_name", "UTF-8") + "=" + URLEncoder.encode(car_name, "UTF-8");
 
             URL url = new URL(link);
             URLConnection conn = url.openConnection();

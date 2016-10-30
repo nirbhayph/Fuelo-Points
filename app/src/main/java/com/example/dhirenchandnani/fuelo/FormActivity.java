@@ -155,11 +155,11 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
 
        Log.d("RESULTS:",results1[0]+"---"+results1[1]);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,results2); //selected item will look like a spinner set from XML
-        Log.d("AA WORKING","+");
+
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Log.d("SAA workingin","+");
+
         spinner.setAdapter(spinnerArrayAdapter);
-        Log.d("Last line run","-");
+
     }
 
 

@@ -92,7 +92,7 @@ public class ViewFormActivity extends AppCompatActivity {
 
 
     public void uploadDetails(View view){
-        new SendDataActivity(this).execute(billNo,petrolAmnt,date,time,nol,"http://google.com");
+        new SendDataActivity(this).execute(billNo,petrolAmnt,date,time,nol,MapsActivity.userid,carV,"http://google.com");
 
     }
 }
