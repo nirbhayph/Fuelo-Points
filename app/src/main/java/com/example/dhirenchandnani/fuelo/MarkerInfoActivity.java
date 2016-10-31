@@ -80,6 +80,8 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marker_info);
 
+
+
         Intent intent = getIntent();
 
         marker_title = intent.getStringExtra(MapsActivity.MARKER_TITLE);
@@ -108,14 +110,6 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 
 
 
-        Button ED = (Button)findViewById(R.id.enterDetails);
-        ED.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent6 = new Intent(MarkerInfoActivity.this, FormActivity.class);
-                startActivity(intent6);
-            }
-        });
 
 
 
@@ -143,6 +137,7 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
                         this, R.raw.style_json2));
 
         String url = getUrl(current_location, marker_position);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         Log.d("onMapClick", url.toString());
         FetchUrl FetchUrl = new FetchUrl();
 
@@ -154,11 +149,15 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
         MarkerOptions source = new MarkerOptions();
         LatLng latLng = new LatLng(current_location.getLatitude(),current_location.getLongitude());
         source.position(latLng);
+        source.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin_circle_white_24dp));
         mMap.addMarker(source);
+
         MarkerOptions dest = new MarkerOptions();
         dest.position(marker_position);
         dest.title(marker_title);
+        dest.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_local_gas_station_white_24dp));
         mMap.addMarker(dest);
+
         //mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
         Log.d("Distance Between" ,DistBet);
@@ -357,8 +356,8 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
                     sum += results[0];
                 }
                 Log.d("Distance",sum+"");
-                lineOptions.width(10);
-                lineOptions.color(Color.RED);
+                lineOptions.width(22);
+                lineOptions.color(Color.parseColor("#FFB900"));
 
                 Log.d("onPostExecute","onPostExecute lineoptions decoded");
 
@@ -397,6 +396,13 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 //        }
 //
 //    }
+
+
+     public void goToUploadForm(View v){
+         Intent intent6 = new Intent(MarkerInfoActivity.this, FormActivity.class);
+         startActivity(intent6);
+     }
+
 
     @Override
     public void onConnectionSuspended(int i) {
@@ -503,3 +509,5 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 
 
 }
+
+

@@ -160,9 +160,9 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
 //        results1 = Arrays.copyOfRange(results1,1,results1.length);
 
        Log.d("RESULTS:",results1[0]+"---"+results1[1]);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,results2); //selected item will look like a spinner set from XML
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item,results2); //selected item will look like a spinner set from XML
 
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         spinner.setAdapter(spinnerArrayAdapter);
 
