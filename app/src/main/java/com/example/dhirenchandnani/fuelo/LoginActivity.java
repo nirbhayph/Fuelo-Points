@@ -1,10 +1,13 @@
 package com.example.dhirenchandnani.fuelo;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -20,7 +23,16 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.login_form);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().hide();
+        TextView myTextView1=(TextView)findViewById(R.id.label_fuelo);
+        TextView myTextView2=(TextView)findViewById(R.id.label_points);
+        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
+        myTextView1.setTypeface(typeFace);
+        myTextView2.setTypeface(typeFace);
+
 
 
 

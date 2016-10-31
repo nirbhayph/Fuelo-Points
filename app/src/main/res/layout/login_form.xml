@@ -2,20 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c32026" >
+    android:background="#121121" >
 
-    <TextView
-        android:layout_marginTop="60dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="eventslist"
-        android:id="@+id/label_venue"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="100dp">
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="fuelo"
+
+        android:id="@+id/label_fuelo"
         android:textColor="#ffffff"
         android:gravity="center"
-        android:textSize="80dp"
+        android:textStyle="bold"
+        android:textSize="60dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=" points"
+            android:textStyle="bold"
+            android:id="@+id/label_points"
+            android:textColor="#FFF568"
+            android:gravity="center"
+            android:textSize="60dp"></TextView>
 
-
+    </LinearLayout>
 
 
         />
@@ -23,30 +41,34 @@
     <EditText
         android:layout_width="match_parent"
         android:textColorLink="#fff"
-        android:hint="Username"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/tusername"
-
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textColor="#ffffff"
-
+        android:hint="Email"
         android:gravity="center"
         android:textColorHint="#fff"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/buttonbg"
         android:theme="@style/MyEditTextTheme"/>
 
 
 
     <EditText
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:textColorLink="#fff"
-        android:hint="Password"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/tpassword"
 
+        android:layout_marginTop="10dp"
+        android:hint="Password"
         android:textColor="#ffffff"
-        android:layout_weight="0.07"
         android:gravity="center"
         android:textColorHint="#fff"
+        android:background="@drawable/buttonbg"
         android:theme="@style/MyEditTextTheme"
         android:inputType="textPassword"
         android:ems="10"/>
@@ -54,7 +76,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200px"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
