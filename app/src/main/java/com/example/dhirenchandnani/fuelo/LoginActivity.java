@@ -27,10 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_form);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().hide();
-        TextView myTextView1=(TextView)findViewById(R.id.label_fuelo);
         TextView myTextView2=(TextView)findViewById(R.id.label_points);
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
-        myTextView1.setTypeface(typeFace);
         myTextView2.setTypeface(typeFace);
 
 

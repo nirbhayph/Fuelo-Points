@@ -10,23 +10,12 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="100dp">
-    <TextView
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="fuelo"
-
-        android:id="@+id/label_fuelo"
-        android:textColor="#ffffff"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="60dp"></TextView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=" points"
+            android:text="fuelopoints"
             android:textStyle="bold"
             android:id="@+id/label_points"
             android:textColor="#FFF568"

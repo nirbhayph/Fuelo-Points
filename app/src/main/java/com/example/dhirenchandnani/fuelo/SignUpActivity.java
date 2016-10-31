@@ -1,12 +1,15 @@
 package com.example.dhirenchandnani.fuelo;
 
 import android.content.ClipData;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -15,7 +18,7 @@ import android.widget.Toast;
  */
 
 public class SignUpActivity extends AppCompatActivity {
-    LinearLayout ll1,ll2,ll3,ll4,ll5;
+    LinearLayout ll1,ll2,ll3,ll4,ll5,llm;
     LinearLayout mainll;
     LinearLayout.LayoutParams layoutParams;
     static int c = 1;
@@ -28,8 +31,12 @@ public class SignUpActivity extends AppCompatActivity {
         ll3=(LinearLayout) findViewById(R.id.Car_Details_3);
         ll4=(LinearLayout) findViewById(R.id.Car_Details_4);
         ll5=(LinearLayout) findViewById(R.id.Car_Details_5);
+        llm=ll3;
         layoutParams = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        TextView myTextView2=(TextView)findViewById(R.id.label_points);
+        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
+        myTextView2.setTypeface(typeFace);
 
 
 
@@ -48,6 +55,13 @@ public class SignUpActivity extends AppCompatActivity {
         if(c==4)
             ll5.setVisibility(LinearLayout.VISIBLE);
         c++;
+        final ScrollView scrollView = (ScrollView) this.findViewById(R.id.scrollX);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
     }
 
     public void removeCar(View view){
@@ -61,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
             k1.setText("");
             EditText k2 = (EditText) findViewById(R.id.ed2b);
             k2.setText("");
+            llm=ll1;
 
 
         }
@@ -70,6 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
             k1.setText("");
             EditText k2 = (EditText) findViewById(R.id.ed3b);
             k2.setText("");
+            llm=ll2;
         }
         if(c==4) {
             ll4.setVisibility(LinearLayout.INVISIBLE);
@@ -77,6 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
             k1.setText("");
             EditText k2 = (EditText) findViewById(R.id.ed4b);
             k2.setText("");
+            llm=ll3;
         }
             if(c==5) {
 
@@ -85,8 +102,20 @@ public class SignUpActivity extends AppCompatActivity {
                 k1.setText("");
                 EditText k2 = (EditText) findViewById(R.id.ed5b);
                 k2.setText("");
+                llm=ll4;
             }
                 c--;
+
+
+
+        final ScrollView scrollView = (ScrollView) this.findViewById(R.id.scrollX);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+
+                scrollView.scrollTo(0, llm.getBottom());
+            }
+        });
     }
 
     public void registerUser(View view){
