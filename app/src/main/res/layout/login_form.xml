@@ -18,7 +18,7 @@
             android:text="fuelopoints"
             android:textStyle="bold"
             android:id="@+id/label_points"
-            android:textColor="#FFF568"
+            android:textColor="#FFF"
             android:gravity="center"
             android:textSize="60dp"></TextView>
 

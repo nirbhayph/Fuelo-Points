@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.nfc.FormatException;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -105,7 +107,11 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
 //        new SpinnerDetails(this).execute();
 
 
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().hide();
+        TextView myTextView2=(TextView)findViewById(R.id.label_upload);
+        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
+        myTextView2.setTypeface(typeFace);
 
 
         SimpleDateFormat dateF = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
