@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
@@ -65,6 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
 
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -179,68 +181,91 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        Button btnPetrol = (Button) findViewById(R.id.btnPetrol);
-        btnPetrol.setOnClickListener(new View.OnClickListener() {
-            String Petrol = "petrol";
-            @Override
-            public void onClick(View v) {
-                Log.d("onClick", "Button is Clicked");
-                /* mMap.clear(); */   //clear the map
-                String url = getUrl(latitude, longitude, Petrol);   //used to get information about nearby places
-                Object[] DataTransfer = new Object[2];
-                DataTransfer[0] = mMap;
-                DataTransfer[1] = url;
-                Log.d("onClick", url);
-                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-                getNearbyPlacesData.execute(DataTransfer);  //add markers
-                Toast.makeText(MapsActivity.this,"Nearby Petrol Pumps", Toast.LENGTH_LONG).show();
-            }
-        });
 
-        Button btnCng = (Button) findViewById(R.id.btnCng);
-        btnCng.setOnClickListener(new View.OnClickListener() {
-            String Cng = "cng";
-            @Override
-            public void onClick(View v) {
-                Log.d("onClick", "Button is Clicked");
 
-                String url = getUrl(latitude, longitude, Cng);
-                Object[] DataTransfer = new Object[2];
-                DataTransfer[0] = mMap;
-                DataTransfer[1] = url;
-                Log.d("onClick", url);
-                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-                getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(MapsActivity.this,"Nearby Cng Pumps", Toast.LENGTH_LONG).show();
-            }
-        });
 
-        Button btnDiesel = (Button) findViewById(R.id.btnDiesel);
-        btnDiesel.setOnClickListener(new View.OnClickListener() {
-            String Diesel = "diesel";
-            @Override
-            public void onClick(View v) {
-                Log.d("onClick", "Button is Clicked");
 
-                if (mCurrLocationMarker != null) {
-                    mCurrLocationMarker.remove();
-                }
-                String url = getUrl(latitude, longitude, Diesel);
-                Object[] DataTransfer = new Object[2];
-                DataTransfer[0] = mMap;
-                DataTransfer[1] = url;
-                Log.d("onClick", url);
-                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-                getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(MapsActivity.this,"Nearby Diesel Pumps", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         //googleMap.setOnMarkerClickListener(this);
 
         //googleMap.setOnInfoWindowClickListener(this);
 
 
+    }
+    public void func_Petrol(View v) {
+        FloatingActionButton button = (FloatingActionButton) this.findViewById(R.id.btnPetrol);
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFB900")));
+
+        FloatingActionButton button2 = (FloatingActionButton) this.findViewById(R.id.btnCng);
+        button2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#121121")));
+
+        FloatingActionButton button3 = (FloatingActionButton) this.findViewById(R.id.btnDiesel);
+        button3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#121121")));
+
+
+        String Petrol = "petrol";
+        Log.d("onClick", "Button is Clicked");
+                /* mMap.clear(); */   //clear the map
+        String url = getUrl(latitude, longitude, Petrol);   //used to get information about nearby places
+        Object[] DataTransfer = new Object[2];
+
+        DataTransfer[0] = mMap;
+        DataTransfer[1] = url;
+        Log.d("onClick", url);
+        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+        getNearbyPlacesData.execute(DataTransfer);  //add markers
+        Toast.makeText(MapsActivity.this,"Nearby Petrol Pumps", Toast.LENGTH_LONG).show();
+    }
+
+    public void func_CNG(View v) {
+        FloatingActionButton button = (FloatingActionButton) this.findViewById(R.id.btnCng);
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFB900")));
+
+        FloatingActionButton button2 = (FloatingActionButton) this.findViewById(R.id.btnPetrol);
+        button2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#121121")));
+
+        FloatingActionButton button3 = (FloatingActionButton) this.findViewById(R.id.btnDiesel);
+        button3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#121121")));
+
+
+        String Cng = "cng";
+        Log.d("onClick", "Button is Clicked");
+
+        String url = getUrl(latitude, longitude, Cng);
+        Object[] DataTransfer = new Object[2];
+        DataTransfer[0] = mMap;
+        DataTransfer[1] = url;
+        Log.d("onClick", url);
+        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+        getNearbyPlacesData.execute(DataTransfer);
+        Toast.makeText(MapsActivity.this,"Nearby Cng Pumps", Toast.LENGTH_LONG).show();
+    }
+
+    public void func_Diesel(View v) {
+        FloatingActionButton button = (FloatingActionButton) this.findViewById(R.id.btnDiesel);
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FFB900")));
+
+        FloatingActionButton button2 = (FloatingActionButton) this.findViewById(R.id.btnPetrol);
+        button2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#121121")));
+
+        FloatingActionButton button3 = (FloatingActionButton) this.findViewById(R.id.btnCng);
+        button3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#121121")));
+
+        String Diesel = "diesel";
+        Log.d("onClick", "Button is Clicked");
+
+        if (mCurrLocationMarker != null) {
+            mCurrLocationMarker.remove();
+        }
+        String url = getUrl(latitude, longitude, Diesel);
+        Object[] DataTransfer = new Object[2];
+        DataTransfer[0] = mMap;
+        DataTransfer[1] = url;
+        Log.d("onClick", url);
+        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+        getNearbyPlacesData.execute(DataTransfer);
+        Toast.makeText(MapsActivity.this,"Nearby Diesel Pumps", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -323,7 +348,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin_circle_black_24dp));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera

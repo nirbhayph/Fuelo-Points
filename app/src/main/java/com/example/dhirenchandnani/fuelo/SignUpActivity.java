@@ -37,6 +37,8 @@ public class SignUpActivity extends AppCompatActivity {
         TextView myTextView2=(TextView)findViewById(R.id.label_points);
         Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
         myTextView2.setTypeface(typeFace);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().hide();
 
 
 

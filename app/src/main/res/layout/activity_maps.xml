@@ -1,7 +1,8 @@
-<FrameLayout
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 
@@ -11,55 +12,153 @@
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context="com.example.dhirenchandnani.fuelo.MapsActivity" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="#121121"
+        android:layout_above="@+id/layout"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="bottom"
         android:background="#fff"
-        android:id="@+id/layout">
+        android:id="@+id/layout"
+        android:padding="8dp"
+        android:layout_above="@+id/layout_buttons"
 
-        <Button
-            android:id="@+id/btnPetrol"
-            android:layout_width="0dp"
+
+        >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/btnPetrol"
+                    android:layout_height="wrap_content"
+                    app:elevation="10dp"
+                    android:src="@drawable/ic_local_gas_station_white_24dp"
+                    app:backgroundTint="#121121"
+                    android:onClick="func_Petrol"
+                    />
+                <TextView
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Petrol"/>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Petrol pumps near me"
-            android:background="@drawable/customborder"
-            android:textColor="#fff"/>
+            android:orientation="vertical"
+            android:gravity="center">
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:id="@+id/btnCng"
+                android:layout_height="wrap_content"
+                app:elevation="10dp"
+                android:src="@drawable/ic_local_gas_station_white_24dp"
+                app:backgroundTint="#121121"
+                android:onClick="func_CNG"
+                />
+            <TextView
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CNG"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:id="@+id/btnDiesel"
+                android:layout_height="wrap_content"
+                app:elevation="10dp"
+                android:src="@drawable/ic_local_gas_station_white_24dp"
+                app:backgroundTint="#121121"
+                android:onClick="func_Diesel"
+                />
+            <TextView
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diesel"/>
+        </LinearLayout>
 
+        </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#303436"
+        android:id="@+id/layout_buttons"
+        android:layout_alignParentBottom="true"
+
+
+
+        >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
         <Button
-            android:id="@+id/btnCng"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="CNG Pumps near me"
-            android:background="@drawable/customborder"
+            android:text="LETS GO"
+            android:background="#121121"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btnLG"
+            android:textColor="#fff"
+            android:textStyle="bold"
 
-            android:textColor="#fff"/>
 
-        <Button
-            android:id="@+id/btnDiesel"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Diesel pumps near me"
-            android:background="@drawable/customborder"
-            android:textColor="#fff"/>
+
+            />
 
     </LinearLayout>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#fff"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+            <Button
+                android:textStyle="bold"
+                android:text="UPLOAD BILL"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:background="#121121"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnUploadBill"
+                />
 
-    <Button
-        android:text="Lets GO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLG"
-        android:visibility="gone"/>
-    <!--
+        </LinearLayout>
+</LinearLayout>
 
-    -->
-</FrameLayout>
+
+
+</RelativeLayout>
