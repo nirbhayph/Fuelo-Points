@@ -122,13 +122,14 @@
         android:gravity="center"
         android:layout_weight="1">
         <Button
-            android:text="LETS GO"
+            android:text="LET'S GO"
             android:background="#121121"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btnLG"
             android:textColor="#fff"
             android:textStyle="bold"
+            android:clickable="false"
 
 
 
@@ -154,6 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/btnUploadBill"
+                android:clickable="false"
                 />
 
         </LinearLayout>

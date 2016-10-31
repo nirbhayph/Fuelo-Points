@@ -70,7 +70,7 @@ public class GetNearbyPlacesData extends  AsyncTask<Object, String, String> {
             LatLng latLng = new LatLng(lat, lng);
             markerOptions.position(latLng);
             markerOptions.title(placeName);
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_local_gas_station_black_24dp));
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_local_gas_station_white_24dp));
 
             mMap.addMarker(markerOptions);
 
@@ -93,7 +93,7 @@ public class GetNearbyPlacesData extends  AsyncTask<Object, String, String> {
         LatLng orig = new LatLng(MapsActivity.lati,MapsActivity.longi);
         MarkerOptions CurrmarkerOptions = new MarkerOptions();
         CurrmarkerOptions.position(orig);
-        CurrmarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin_circle_black_24dp));
+        CurrmarkerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin_circle_white_24dp));
         mMap.addMarker(CurrmarkerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(orig));

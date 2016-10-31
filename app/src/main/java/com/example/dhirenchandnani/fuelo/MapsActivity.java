@@ -34,6 +34,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -115,13 +116,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                        this, R.raw.style_json2));
+
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
                 final Button b = (Button) findViewById(R.id.btnLG);
-                b.setVisibility(Button.GONE);
+                b.setEnabled(false);
+                final Button b1 = (Button) findViewById(R.id.btnUploadBill);
+                b1.setEnabled(false);
             }
         });
 
@@ -142,7 +148,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(MapsActivity.this,"MARKER CLICKED",Toast.LENGTH_SHORT).show();
 
                 final Button b = (Button) findViewById(R.id.btnLG);
-                b.setVisibility(Button.VISIBLE);
+                b.setEnabled(true);
+                final Button b1 = (Button) findViewById(R.id.btnUploadBill);
+                b1.setEnabled(true);
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -152,6 +160,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mapintent.putExtra(MARKER_TITLE,marker.getTitle());
                         mapintent.putExtra(MARKER_POSITION,marker.getPosition());
                         mapintent.putExtra(Dist_Bet,results[0]+"");
+                        startActivity(mapintent);
+                    }
+                });
+                b1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent mapintent = new Intent(MapsActivity.this, FormActivity.class);
                         startActivity(mapintent);
                     }
                 });
@@ -348,7 +364,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin_circle_black_24dp));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_person_pin_circle_white_24dp));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
