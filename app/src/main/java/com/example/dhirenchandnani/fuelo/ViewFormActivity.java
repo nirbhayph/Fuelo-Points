@@ -3,8 +3,10 @@ package com.example.dhirenchandnani.fuelo;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +21,7 @@ public class ViewFormActivity extends AppCompatActivity {
 
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    ImageView iv_photo;
+    FloatingActionButton iv_photo;
 
     String billNo = "", petrolAmnt = "", date = "", time = "", nol="",carV="";
 
@@ -44,12 +46,13 @@ public class ViewFormActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
 
 
-        Button b = (Button) findViewById(R.id.fab);
-        iv_photo = (ImageView) findViewById(R.id.imageView5);
+        iv_photo = (FloatingActionButton) findViewById(R.id.thumbImage);
 
-        if (!hasCamera()) {
-            b.setEnabled(false);
-        }
+        TextView myTextView2=(TextView)findViewById(R.id.label_upload);
+        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
+        myTextView2.setTypeface(typeFace);
+
+
 
 
 
@@ -82,6 +85,9 @@ public class ViewFormActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap photo = (Bitmap) extras.get("data");
             iv_photo.setImageBitmap(photo);
+
+
+
         }
     }
 

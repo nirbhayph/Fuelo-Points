@@ -407,12 +407,12 @@
             android:layout_height="wrap_content"
             app:elevation="10dp"
             android:src="@drawable/ic_check_circle_white_24dp"
-            app:backgroundTint="#00BF00"
+            app:backgroundTint="#A4C639"
             android:onClick="registerUser"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
 
             />
 

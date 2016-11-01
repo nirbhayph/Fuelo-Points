@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="The Address"
+                android:textSize="15dp"
                 android:id="@+id/pump_dest_Addr"
                 android:gravity="left"
                 android:textColor="#757575"
@@ -63,7 +64,7 @@
         android:src="@drawable/ic_send_white_24dp"
         app:layout_anchor="@id/viewA"
         app:layout_anchorGravity="bottom|right|end"
-        app:backgroundTint="#FFB900"
+        app:backgroundTint="#Fb9800"
         android:onClick="goToUploadForm"/>
 
 </android.support.design.widget.CoordinatorLayout>

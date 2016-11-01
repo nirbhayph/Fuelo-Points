@@ -1,133 +1,216 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:background="#121121">
 
-    <TextView
-        android:text="TextView"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView8"
-        android:layout_toRightOf="@+id/textView8"
-        android:layout_toEndOf="@+id/textView8"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp"
-        android:id="@+id/paView" />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:fab="http://schemas.android.com/tools"
+        android:background="#121121">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.design.widget.CoordinatorLayout
 
-    <TextView
-        android:text="Time"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/timeView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/paView"
-        android:layout_alignStart="@+id/paView" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:text="date"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/dateView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="400dp"
-        android:minHeight="350dp"
-        app:srcCompat="@color/cast_libraries_material_featurehighlight_outer_highlight_default_color"
-        android:id="@+id/imageView5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true" />
+                    <LinearLayout
+                        android:id="@+id/viewA"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/bg_x3"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-    <Button
-        android:text="Upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/bnView"
-        android:layout_alignStart="@+id/bnView"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="confirmation"
+                            android:textStyle="bold"
+                            android:id="@+id/label_upload"
+                            android:textColor="#FFF"
+                            android:gravity="center"
+                            android:textSize="50dp"></TextView>
+
+
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/viewB"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="#121121"
+                        android:orientation="vertical"
+                        android:gravity="left|center"
+                        android:padding="10dp"
+                        >
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_weight="0.4"
+                                android:layout_height="50dp"
+                                android:id="@+id/dateView"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="5dp"
+                                android:textColor="#ffffff"
+                                android:gravity="center"
+                                android:hint="Date"
+                                android:textSize="18dp"
+                                android:textColorHint="#fff"
+                                android:layout_marginTop="10dp"
+                                android:theme="@style/MyEditTextTheme"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:textSize="18dp"
+                                android:id="@+id/timeView"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="20dp"
+                                android:textColor="#ffffff"
+                                android:hint="Time"
+                                android:layout_weight="0.6"
+                                android:gravity="center"
+                                android:textColorHint="#fff"
+                                android:layout_marginTop="10dp"
+                                android:theme="@style/MyEditTextTheme"/>
+
+
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:textColorLink="#fff"
+                            android:layout_height="50dp"
+                            android:id="@+id/paView"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:textColor="#ffffff"
+                            android:hint="Amount"
+                            android:gravity="center"
+                            android:textColorHint="#fff"
+                            android:layout_marginTop="10dp"
+                            android:textSize="18dp"
+                            android:theme="@style/MyEditTextTheme"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:textColorLink="#fff"
+                            android:layout_height="50dp"
+                            android:id="@+id/bnView"
+                            android:layout_marginLeft="20dp"
+                            android:textSize="18dp"
+                            android:layout_marginRight="20dp"
+                            android:textColor="#ffffff"
+                            android:hint="Bill Number"
+                            android:gravity="center"
+                            android:textColorHint="#fff"
+                            android:layout_marginTop="10dp"
+                            android:theme="@style/MyEditTextTheme"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:textColorLink="#fff"
+                            android:layout_height="50dp"
+                            android:id="@+id/v_nol"
+                            android:layout_marginLeft="20dp"
+                            android:textSize="18dp"
+                            android:layout_marginRight="20dp"
+                            android:textColor="#ffffff"
+                            android:hint="Number of Litres/kgs"
+                            android:gravity="center"
+                            android:textColorHint="#fff"
+                            android:layout_marginTop="10dp"
+                            android:theme="@style/MyEditTextTheme"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:textColorLink="#fff"
+                            android:layout_height="50dp"
+                            android:id="@+id/carView"
+                            android:layout_marginLeft="20dp"
+                            android:textSize="18dp"
+                            android:layout_marginRight="20dp"
+                            android:textColor="#ffffff"
+                            android:hint="Selected Car"
+                            android:gravity="center"
+                            android:textColorHint="#fff"
+                            android:layout_marginTop="10dp"
+                            android:theme="@style/MyEditTextTheme"/>
+
+
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/thumbImage"
+                    android:onClick="uploadDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:clickable="true"
+                    android:src="@drawable/ic_attachment_white_24dp"
+                    app:layout_anchor="@id/viewA"
+                    app:layout_anchorGravity="bottom|right"
+                    app:backgroundTint="#Fb9800"
+                    />
+
+
+
+
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/uplBtn"
-        android:onClick="uploadDetails"/>
-
-    <TextView
-        android:text="Car"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:id="@+id/textView10"
-        android:layout_below="@+id/paView"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
+        app:elevation="10dp"
+        android:src="@drawable/ic_send_white_24dp"
+        app:backgroundTint="#A4C639"
+        android:onClick="uploadDetails"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
 
-    <TextView
-        android:text="Petrol Amount:"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
-
-    <TextView
-        android:text="Bill No:"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
-        android:layout_below="@+id/dateView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="No. of Litres:"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:layout_marginTop="9dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
-
-    <TextView
-        android:text="TextView"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bnView"
-        android:layout_below="@+id/timeView"
-        android:layout_alignLeft="@+id/timeView"
-        android:layout_alignStart="@+id/timeView" />
-
-    <TextView
-        android:text="TextView"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/v_nol"
-        android:layout_above="@+id/paView"
-        android:layout_alignLeft="@+id/paView"
-        android:layout_alignStart="@+id/paView" />
-
-    <TextView
-        android:text="TextView"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/carView"
-        android:layout_below="@+id/paView"
-        android:layout_alignLeft="@+id/paView"
-        android:layout_alignStart="@+id/paView" />
-
+        />
 
 </RelativeLayout>
