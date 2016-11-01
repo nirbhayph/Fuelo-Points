@@ -142,7 +142,8 @@
                     android:textColorHint="#fff"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/buttonbg"
-                    android:theme="@style/MyEditTextTheme"/>
+                    android:theme="@style/MyEditTextTheme"
+                    />
 
 
 

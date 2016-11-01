@@ -1,15 +1,23 @@
 package com.example.dhirenchandnani.fuelo;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,12 +30,15 @@ public class ViewFormActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     FloatingActionButton iv_photo;
+    ImageView expanded_image;
 
     String billNo = "", petrolAmnt = "", date = "", time = "", nol="",carV="";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_form_window);
@@ -65,14 +76,28 @@ public class ViewFormActivity extends AppCompatActivity {
         TextView v_nol = (TextView) findViewById(R.id.v_nol);
         TextView carView = (TextView) findViewById(R.id.carView);
 
+        expanded_image = (ImageView) findViewById(R.id.expanded_image);
 
-        bn.setText(" " + billNo);
+
+
+        bn.setText("Bill No. " + billNo);
         v_date.setText(" " + date);
         v_time.setText(" " + time);
-        pa.setText(" " + petrolAmnt);
-        v_nol.setText(" " + nol);
+        pa.setText("Rs. " + petrolAmnt);
+        v_nol.setText(" " + nol+" Litres/Kgs");
         carView.setText(""+carV);
 
+    }
+
+
+    public void setImage(View view){
+        iv_photo.setVisibility(View.GONE);
+        expanded_image.setVisibility(View.VISIBLE);
+    }
+
+    public void reduceImage(View view){
+        iv_photo.setVisibility(View.VISIBLE);
+        expanded_image.setVisibility(View.GONE);
     }
 
 
@@ -84,9 +109,8 @@ public class ViewFormActivity extends AppCompatActivity {
             Log.d("ITS IN", "0");
             Bundle extras = data.getExtras();
             Bitmap photo = (Bitmap) extras.get("data");
-            iv_photo.setImageBitmap(photo);
 
-
+            expanded_image.setImageBitmap(photo);
 
         }
     }

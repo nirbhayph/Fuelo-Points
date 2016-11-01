@@ -134,6 +134,9 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
                                      String noL = form_nol.getText().toString();
                                      String carV = spinner.getSelectedItem().toString();
 
+                                     if(!bn.equals("") && !pa.equals("") && !noL.equals("")){
+
+
                                      Intent intent2 = new Intent(FormActivity.this, ViewFormActivity.class);
                                      intent2.putExtra(PA, pa);
                                      intent2.putExtra(CAR, carV);
@@ -142,6 +145,13 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
                                      intent2.putExtra(Time,n_time);
                                      intent2.putExtra(Litres,noL);
                                      startActivity(intent2);
+                                     }
+
+                                     else{
+                                         Toast toast= Toast.makeText(FormActivity.this, "All fields are required!", Toast.LENGTH_SHORT);
+                                         toast.setMargin(150,150);
+                                         toast.show();
+                                     }
                                  }
                              });
 

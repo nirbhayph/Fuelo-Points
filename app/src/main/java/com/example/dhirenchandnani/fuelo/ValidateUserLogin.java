@@ -65,8 +65,6 @@ public class ValidateUserLogin  extends AsyncTask<String,Void,String> {
             data += "&" + URLEncoder.encode("pass_word", "UTF-8") + "=" + URLEncoder.encode(pass, "UTF-8");
 
 
-
-
             URL url = new URL(link);
             URLConnection conn = url.openConnection();
 

@@ -12,6 +12,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 
 /**
  * Created by Dhiren Chandnani on 29-10-2016.
@@ -145,11 +147,24 @@ public class SignUpActivity extends AppCompatActivity {
         EditText reppass = (EditText) findViewById(R.id.reppassword_reg);
         String reppass_ = reppass.getText().toString();
 
-        if(password_.equals(reppass_)) {
+        if(password_.equals(reppass_) && !name_.equals("") && !password_.equals("") && !email_.equals("") && !cars_list_name.equals("") && !cars_list_type.equals("")) {
 
-            new RegisterUserActivity(this).execute(c+"", cars_list_name, cars_list_type, name_, password_, email_);
+            boolean b = Pattern.matches("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$", email_);
+            if(b)
+                new RegisterUserActivity(this).execute(c+"", cars_list_name, cars_list_type, name_, password_, email_);
+            else
+            {
+                Toast toast= Toast.makeText(this, "Invalid Email!", Toast.LENGTH_SHORT);
+                toast.setMargin(150,150);
+                toast.show();
+            }
         }
-        else{
+        else if(name_.equals("")||password_.equals("")||email_.equals("")){
+            Toast toast= Toast.makeText(this, "All fields are required!", Toast.LENGTH_SHORT);
+            toast.setMargin(150,150);
+            toast.show();
+        }
+        else if(!password_.equals(reppass_)){
             Toast toast= Toast.makeText(this, "Passwords Don't Match!", Toast.LENGTH_SHORT);
             toast.setMargin(150,150);
             toast.show();

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container"
     xmlns:fab="http://schemas.android.com/tools"
     android:background="#121121">
 
@@ -59,7 +60,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.7"
-                        android:background="#121121"
+                        android:background="@drawable/buttonbg"
+                        android:layout_margin="10dp"
                         android:orientation="vertical"
                         android:gravity="left|center"
                         android:padding="10dp"
@@ -70,7 +72,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            >
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_weight="0.4"
@@ -103,7 +106,15 @@
 
 
 
+
+
                         </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#fff"/>
+
 
                         <TextView
                             android:layout_width="match_parent"
@@ -119,6 +130,12 @@
                             android:layout_marginTop="10dp"
                             android:textSize="18dp"
                             android:theme="@style/MyEditTextTheme"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#fff"/>
+
                         <TextView
                             android:layout_width="match_parent"
                             android:textColorLink="#fff"
@@ -133,6 +150,12 @@
                             android:textColorHint="#fff"
                             android:layout_marginTop="10dp"
                             android:theme="@style/MyEditTextTheme"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#fff"/>
+
 
                         <TextView
                             android:layout_width="match_parent"
@@ -151,6 +174,11 @@
 
                         <TextView
                             android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#fff"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
                             android:textColorLink="#fff"
                             android:layout_height="50dp"
                             android:id="@+id/carView"
@@ -165,17 +193,13 @@
                             android:theme="@style/MyEditTextTheme"/>
 
 
-
-
-
-
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/thumbImage"
-                    android:onClick="uploadDetails"
+                    android:onClick="setImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -184,7 +208,10 @@
                     app:layout_anchor="@id/viewA"
                     app:layout_anchorGravity="bottom|right"
                     app:backgroundTint="#Fb9800"
+
                     />
+
+
 
 
 
@@ -195,6 +222,14 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:contentDescription="Zoomed image"
+        android:onClick="reduceImage"/>
 
 
 
