@@ -155,7 +155,7 @@
                         android:layout_height="wrap_content"
                         app:elevation="10dp"
                         android:src="@drawable/ic_add_circle_white_24dp"
-                        app:backgroundTint="#1b5e20"
+                        app:backgroundTint="#FB9800"
                         android:onClick="addCar"/>
                 </LinearLayout>
                 <LinearLayout
@@ -168,7 +168,7 @@
                         app:elevation="10dp"
                         android:layout_marginLeft="5dp"
                         android:src="@drawable/ic_remove_circle_white_24dp"
-                        app:backgroundTint="#1b5e20"
+                        app:backgroundTint="#FB9800"
                         android:onClick="removeCar"/>
                 </LinearLayout>
             </LinearLayout>
@@ -407,7 +407,7 @@
             android:layout_height="wrap_content"
             app:elevation="10dp"
             android:src="@drawable/ic_check_circle_white_24dp"
-            app:backgroundTint="#1b5e20"
+            app:backgroundTint="#00BF00"
             android:onClick="registerUser"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"

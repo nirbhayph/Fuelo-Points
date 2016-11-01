@@ -134,7 +134,7 @@ public class MarkerInfoActivity extends MapsActivity implements OnMapReadyCallba
 
         mMap.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(
-                        this, R.raw.style_json2));
+                        this, R.raw.style_json));
 
         String url = getUrl(current_location, marker_position);
         mMap.getUiSettings().setMapToolbarEnabled(false);

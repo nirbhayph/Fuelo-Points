@@ -118,7 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(
-                        this, R.raw.style_json2));
+                        this, R.raw.style_json));
 
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

@@ -1,173 +1,200 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121121">
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121121">
+    android:orientation="vertical">
+    <android.support.design.widget.CoordinatorLayout
 
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="5dp">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/viewA"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_weight="0.3"
+                android:background="@drawable/bg_x3"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="upload"
+                    android:textStyle="bold"
+                    android:id="@+id/label_upload"
+                    android:textColor="#FFF"
+                    android:gravity="center"
+                    android:textSize="80dp"></TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/viewB"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:background="#121121"
+                android:orientation="vertical"
+                android:gravity="left|center"
+                android:padding="10dp">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:textColorLink="#fff"
+                        android:layout_weight="0.4"
+                        android:layout_height="50dp"
+                        android:id="@+id/editText3"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:textColor="#ffffff"
+                        android:inputType="number"
+                        android:hint="Date"
+                        android:gravity="center"
+                        android:textColorHint="#fff"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/buttonbg"
+                        android:theme="@style/MyEditTextTheme"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:textColorLink="#fff"
+                        android:layout_height="50dp"
+                        android:id="@+id/editText4"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp"
+                        android:textColor="#ffffff"
+                        android:inputType="number"
+                        android:hint="Time"
+                        android:layout_weight="0.6"
+                        android:gravity="center"
+                        android:textColorHint="#fff"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/buttonbg"
+                        android:theme="@style/MyEditTextTheme"/>
+
+
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:textColorLink="#fff"
+                    android:layout_height="50dp"
+                    android:id="@+id/petrolAmnt"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:inputType="number"
+                    android:hint="Amount"
+                    android:gravity="center"
+                    android:textColorHint="#fff"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonbg"
+                    android:theme="@style/MyEditTextTheme"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:textColorLink="#fff"
+                    android:layout_height="50dp"
+                    android:id="@+id/billNo"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:inputType="number"
+                    android:hint="Bill Number"
+                    android:gravity="center"
+                    android:textColorHint="#fff"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonbg"
+                    android:theme="@style/MyEditTextTheme"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:textColorLink="#fff"
+                    android:layout_height="50dp"
+                    android:id="@+id/nOL"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:inputType="number"
+                    android:hint="Number of Litres/Kgs"
+                    android:gravity="center"
+                    android:textColorHint="#fff"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonbg"
+                    android:theme="@style/MyEditTextTheme"/>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/buttonbg"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="18dp"
+                        android:textColor="#fff"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Select Car :"/>
+
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/spinner"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:backgroundTint="#fff"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="upload"
-            android:textStyle="bold"
-            android:id="@+id/label_upload"
-            android:textColor="#FFF"
-            android:gravity="center"
-            android:textSize="60dp"></TextView>
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@drawable/ic_photo_camera_white_24dp"
+            app:layout_anchor="@id/viewA"
+            app:layout_anchorGravity="bottom|right|end"
+            app:backgroundTint="#Fb9800"/>
 
-    </LinearLayout>
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:textColorLink="#fff"
-        android:layout_height="50dp"
-        android:id="@+id/petrolAmnt"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#ffffff"
-        android:inputType="number"
-        android:hint="Petrol Amount"
-        android:gravity="center"
-        android:textColorHint="#fff"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonbg"
-        android:theme="@style/MyEditTextTheme"/>
-
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:textColorLink="#fff"
-        android:layout_height="50dp"
-        android:id="@+id/editText3"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#ffffff"
-        android:inputType="number"
-        android:hint="Date"
-        android:gravity="center"
-        android:textColorHint="#fff"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonbg"
-        android:theme="@style/MyEditTextTheme"/>
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:textColorLink="#fff"
-        android:layout_height="50dp"
-        android:id="@+id/editText4"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#ffffff"
-        android:inputType="number"
-        android:hint="Time"
-        android:gravity="center"
-        android:textColorHint="#fff"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonbg"
-        android:theme="@style/MyEditTextTheme"/>
-
-
-
-    <EditText
-        android:layout_width="match_parent"
-        android:textColorLink="#fff"
-        android:layout_height="50dp"
-        android:id="@+id/billNo"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#ffffff"
-        android:inputType="number"
-        android:hint="Bill Number"
-        android:gravity="center"
-        android:textColorHint="#fff"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonbg"
-        android:theme="@style/MyEditTextTheme"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:textColorLink="#fff"
-        android:layout_height="50dp"
-        android:id="@+id/nOL"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#ffffff"
-        android:inputType="number"
-        android:hint="Number of Litres"
-        android:gravity="center"
-        android:textColorHint="#fff"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonbg"
-        android:theme="@style/MyEditTextTheme"/>
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/buttonbg"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="16dp"
-            android:textColor="#fff"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Select Car"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/spinner"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:backgroundTint="#fff"
-             />
-
-    </LinearLayout>
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:src="@drawable/ic_camera_white_24dp"
-        app:backgroundTint="#1b5e20"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-
+    </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>
 </ScrollView>
