@@ -36,6 +36,7 @@
         android:layout_marginRight="20dp"
         android:textColor="#ffffff"
         android:hint="Email"
+        android:maxLines="1"
         android:gravity="center"
         android:textColorHint="#fff"
         android:layout_marginTop="80dp"

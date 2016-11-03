@@ -105,7 +105,7 @@ public class ValidateUserLogin  extends AsyncTask<String,Void,String> {
             if(results[0].trim().equals("Success")) {
                 Log.e("check2",results[0]);
                 LoginActivity.userid = results[1];
-                Intent intent = new Intent(this.context, MapsActivity.class);
+                Intent intent = new Intent(this.context, OptionsActivity.class);
                 this.context.startActivity(intent);
 
             }

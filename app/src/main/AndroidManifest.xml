@@ -60,6 +60,11 @@
         <activity
             android:name=".ViewFormActivity"
             android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".OptionsActivity"
+            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait">
