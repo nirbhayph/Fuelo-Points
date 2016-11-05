@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_fuelsec"
+            android:icon="@drawable/ic_local_gas_station_black_24dp"
+            android:title="Fuel Section" />
+        <item
+            android:id="@+id/nav_upl_bill"
+            android:icon="@drawable/ic_file_upload_black_24dp"
+            android:title="Upload a Bill" />
+
+        <item
+            android:id="@+id/nav_offersec"
+            android:icon="@drawable/ic_local_offer_black_24dp"
+            android:title="Offers Section" />
+
+        <item
+            android:id="@+id/nav_pointssec"
+            android:icon="@drawable/ic_group_work_black_24dp"
+            android:title="Your Points" />
+
+
+    </group>
+
+    <item android:title="History"
+        android:icon="@drawable/ic_history_black_24dp">
+        <menu>
+            <item
+                android:id="@+id/nav_fuelhistory"
+                android:icon="@drawable/ic_local_gas_station_black_24dp"
+                android:title="Fuel History" />
+            <item
+                android:id="@+id/nav_usagehistory"
+                android:icon="@drawable/ic_group_work_black_24dp"
+                android:title="Points Usage History" />
+        </menu>
+    </item>
+
+    <item android:title="Profile"
+        android:icon="@drawable/ic_person_black_24dp">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_lock_black_24dp"
+                android:title="Logout" />
+
+        </menu>
+    </item>
+
+
+</menu>
