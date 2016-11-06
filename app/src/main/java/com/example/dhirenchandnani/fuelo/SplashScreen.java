@@ -10,11 +10,15 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 /**
  * Created by nirbhay on 11/1/16.
  */
 
 public class SplashScreen extends AppCompatActivity{
+
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -36,8 +40,10 @@ public class SplashScreen extends AppCompatActivity{
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(SplashScreen.this,LoginActivity.class);
-                    startActivity(intent);
+
+                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                        startActivity(intent);
+
                 }
             }
         };

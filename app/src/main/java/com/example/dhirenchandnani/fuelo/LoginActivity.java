@@ -1,6 +1,8 @@
 package com.example.dhirenchandnani.fuelo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.login_form);
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().hide();
         TextView myTextView2=(TextView)findViewById(R.id.label_points);
@@ -49,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         if(!uname.equals("") && !pass.equals("")){
 
             new ValidateUserLogin(this).execute(uname,pass);
+
 
         }
         else{

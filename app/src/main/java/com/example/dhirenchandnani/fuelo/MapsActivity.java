@@ -384,11 +384,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case Activity.RESULT_OK:
                         break;
                     case Activity.RESULT_CANCELED:
-                        if(android.os.Build.VERSION.SDK_INT>=16)
-                        finishAffinity();
-                        else
-                        ActivityCompat.finishAffinity(this);
+                        {
+                        Intent backIntent = new Intent(this,NavDrawerActivity.class);
+                        startActivity(backIntent);
                         break;
+                        }
                 }
                 break;
         }
