@@ -1,5 +1,6 @@
 package com.example.dhirenchandnani.fuelo;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,6 +19,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
+
+import static com.example.dhirenchandnani.fuelo.R.styleable.View;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -39,6 +43,8 @@ public class OfferActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+
+
         getData();
     }
 
@@ -53,6 +59,8 @@ public class OfferActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
+
+                Log.d("DATA----------->",s);
                 parseJSON(s);
                 showData();
             }
@@ -74,6 +82,7 @@ public class OfferActivity extends AppCompatActivity {
 
                     return sb.toString().trim();
 
+
                 }catch(Exception e){
                     return null;
                 }
@@ -94,17 +103,20 @@ public class OfferActivity extends AppCompatActivity {
 
 
             JSONArray jsonArray = new JSONArray(json);
+
+            config = new Config(jsonArray.length());
+
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject k = jsonArray.getJSONObject(i);
 
-
-                Config.names[i] = getName(k);
                 Config.titles[i] = getTitles(k);
+
                 Config.ids[i] = getIds(k);
                 Config.descrips[i] = getDescription(k);
                 Config.categorys[i] = getCategory(k);
                 Config.codes[i] = getCode(k);
                 Config.turls[i] = getTUrl(k);
+                Config.names[i] = getName(k);
             }
 
         } catch (JSONException e) {
@@ -128,6 +140,7 @@ public class OfferActivity extends AppCompatActivity {
         String title = null;
         try {
             title = j.getString(Config.TAG_TITLE);
+           
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -179,10 +192,16 @@ public class OfferActivity extends AppCompatActivity {
         String turl = null;
         try {
             turl = j.getString(Config.TAG_TURL);
+
             } catch (JSONException e) {
             e.printStackTrace();
         }
         return turl;
+    }
+
+    public void goToCategoryList(View view){
+        Intent intent = new Intent(this,ListCategoriesActivity.class);
+        startActivity(intent);
     }
 
 }

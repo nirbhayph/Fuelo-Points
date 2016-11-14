@@ -44,6 +44,11 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void goToCoupons(View view){
+        Intent newIntent = new Intent(this,OfferActivity.class);
+        startActivity(newIntent);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -1,7 +1,9 @@
 package com.example.dhirenchandnani.fuelo;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -16,44 +18,76 @@ import java.net.URL;
 
 public class ListCategoriesActivity extends AppCompatActivity {
 
+    public String[] category_list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_categories);
-        String jsonCategories = getJSON();
-        parseJSON(jsonCategories);
+        Log.d("Entered LCA","");
+        getJSON();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, Config.category_list);
 
-        ListView listView = (ListView) findViewById(R.id.list_category);
-        listView.setAdapter(adapter);
+
 
     }
 
 
-    protected String getJSON() {
+    private void getJSON() {
 
-        BufferedReader bufferedReader = null;
-        try {
-            URL url = new URL(Config.GET_URL);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            StringBuilder sb = new StringBuilder();
+        class GetJson extends AsyncTask<Void,Void,String>{
 
-            bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-            String json;
-            while((json = bufferedReader.readLine())!= null){
-                sb.append(json+"\n");
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
             }
 
-            return sb.toString().trim();
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
 
-        }catch(Exception e){
-            return null;
+                Log.d("DATA----------->",s);
+                parseJSON(s);
+                showData();
+            }
+
+            @Override
+            protected String doInBackground(Void... params) {
+                BufferedReader bufferedReader = null;
+                try {
+                    URL url = new URL("http://109.73.164.163/FueloPoints/server_files/get_unique_category_list.php");
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                    String json;
+                    while((json = bufferedReader.readLine())!= null){
+                        sb.append(json+"\n");
+                    }
+
+                    Log.d("JSON---->",sb.toString().trim());
+                    return sb.toString().trim();
+
+
+                }catch(Exception e){
+                    return null;
+                }
+
+            }
+
         }
+        GetJson gJ = new GetJson();
+        gJ.execute();
 
+}
 
+    public void showData(){
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, category_list);
+        ListView listView = (ListView) findViewById(R.id.list_category);
+        listView.setAdapter(adapter);
     }
 
     private void parseJSON(String json){
@@ -61,10 +95,13 @@ public class ListCategoriesActivity extends AppCompatActivity {
 
 
             JSONArray jsonArray = new JSONArray(json);
+            category_list = new String[jsonArray.length()];
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject k = jsonArray.getJSONObject(i);
 
-                Config.category_list[i] = getCategory(k);
+
+                category_list[i] = getCategory(k);
+
 
             }
 
