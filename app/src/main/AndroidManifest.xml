@@ -78,7 +78,8 @@
         <activity
             android:name=".OfferActivity"
             android:label="@string/title_activity_offer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListCategoriesActivity"></activity>
     </application>
 
 </manifest>

@@ -17,8 +17,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class OfferActivity extends AppCompatActivity {
 
@@ -27,8 +25,6 @@ public class OfferActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private Config config;
 
-    Iterator keys;
-    String[] keys_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +85,7 @@ public class OfferActivity extends AppCompatActivity {
     }
 
     public void showData(){
-        mAdapter = new MyAdapter(Config.names,Config.payouts, Config.ids);
+        mAdapter = new MyAdapter(Config.names,Config.titles, Config.ids);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -97,30 +93,18 @@ public class OfferActivity extends AppCompatActivity {
         try {
 
 
-            JSONObject jsonObject = new JSONObject(json);
-            JSONObject obj1 = (JSONObject)jsonObject.get("response");
-            JSONObject obj2 = (JSONObject)obj1.get("data");
-            JSONObject obj3 = (JSONObject) obj2.get("data");
-            keys = obj3.keys();
-            int y = 0;
-            keys_list = new String[obj3.length()];
-            while(keys.hasNext()){
-                keys_list[y] = keys.next().toString();
-                Log.d("List------>",y+"++++"+keys_list[y]);
-                y++;
-            }
+            JSONArray jsonArray = new JSONArray(json);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject k = jsonArray.getJSONObject(i);
 
-
-
-            config = new Config(obj3.length());
-
-            for(int i=0; i<obj3.length(); i++){
-                JSONObject j = (JSONObject)obj3.get(keys_list[i]);
-                JSONObject k = j.getJSONObject("Offer");
 
                 Config.names[i] = getName(k);
-                Config.payouts[i] = getPayouts(k);
+                Config.titles[i] = getTitles(k);
                 Config.ids[i] = getIds(k);
+                Config.descrips[i] = getDescription(k);
+                Config.categorys[i] = getCategory(k);
+                Config.codes[i] = getCode(k);
+                Config.turls[i] = getTUrl(k);
             }
 
         } catch (JSONException e) {
@@ -134,21 +118,20 @@ public class OfferActivity extends AppCompatActivity {
         String name = null;
         try {
             name = j.getString(Config.TAG_NAME);
-            Log.d("NAME---->",name);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return name;
     }
 
-    private String getPayouts(JSONObject j){
-        String payout = null;
+    private String getTitles(JSONObject j){
+        String title = null;
         try {
-            payout = j.getString(Config.TAG_PAYOUT);
+            title = j.getString(Config.TAG_TITLE);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return payout;
+        return title;
     }
 
     private String getIds(JSONObject j){
@@ -162,23 +145,44 @@ public class OfferActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        // specify an adapter (see also next example)
-//        mAdapter = new MyAdapter(myDataset);
-//        mRecyclerView.setAdapter(mAdapter);
-
-
+    private String getDescription(JSONObject j){
+        String description = null;
+        try {
+            description = j.getString(Config.TAG_DESCRIPTION);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return description;
     }
+
+    private String getCategory(JSONObject j){
+        String category = null;
+        try {
+            category = j.getString(Config.TAG_CATEGORY);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return category;
+    }
+
+    private String getCode(JSONObject j){
+        String code = null;
+        try {
+            code = j.getString(Config.TAG_CODE);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return code;
+    }
+
+    private String getTUrl(JSONObject j){
+        String turl = null;
+        try {
+            turl = j.getString(Config.TAG_TURL);
+            } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return turl;
+    }
+
+}

@@ -39,8 +39,8 @@
                 android:paddingBottom="25dp" />
 
             <TextView
-                android:id="@+id/card_view_payout"
-                android:hint="Payout"
+                android:id="@+id/card_view_title"
+                android:hint="Title"
                 android:layout_gravity="bottom|center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

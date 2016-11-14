@@ -1,6 +1,6 @@
 package com.example.dhirenchandnani.fuelo;
 
-import android.app.LauncherActivity;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,18 +28,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             // Find the TextView in the LinearLayout
             mTextView1 = (TextView)v.findViewById(R.id.card_view_id);
             mTextView2 = (TextView)v.findViewById(R.id.card_view_name);
-            mTextView3 = (TextView)v.findViewById(R.id.card_view_payout);
+            mTextView3 = (TextView)v.findViewById(R.id.card_view_title);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(String[] name, String[] payout, String[] id) {
+    public MyAdapter(String[] name, String[] title, String[] id) {
         super();
         items = new ArrayList<ListItem>();
         for(int i =0; i < (name.length); i++){
             ListItem item = new ListItem();
             item.setName(name[i]);
-            item.setPayout(payout[i]);
+            item.setTitle(title[i]);
             item.setId(id[i]);
             items.add(item);
         }
@@ -67,7 +67,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         holder.mTextView1.setText(list.getId());
         holder.mTextView2.setText(list.getName());
-        holder.mTextView3.setText(list.getPayout());
+        holder.mTextView3.setText(list.getTitle());
 
 
 
