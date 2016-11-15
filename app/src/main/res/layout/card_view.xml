@@ -3,47 +3,115 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="7dp"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    android:padding="10dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#121121"
+    >
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardBackgroundColor="#11111111"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardBackgroundColor="@android:color/holo_orange_light"
-        card_view:contentPadding="10dp"
-        card_view:cardElevation="5dp">
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="0dp"
+        >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/buttonbg"
+
             >
 
+
+
+            <TextView
+                android:id="@+id/card_view_name"
+                android:text="Name"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                />
+
+
+            <TextView
+                android:id="@+id/card_view_title"
+                android:textColor="#fff"
+                android:text="Title"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"/>
             <TextView
                 android:id="@+id/card_view_id"
                 android:hint="ID"
                 android:gravity="center"
+                android:textSize="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
             <TextView
-                android:id="@+id/card_view_name"
-                android:hint="Name"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:paddingBottom="25dp" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="10dp"
 
-            <TextView
-                android:id="@+id/card_view_title"
-                android:hint="Title"
-                android:layout_gravity="bottom|center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
+                >
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/buttonbg"
+                    android:drawableLeft="@drawable/ic_loyalty_white_24dp"
+                    android:padding="10dp"
+                    android:gravity="center|center_vertical"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:textColor="#fff"
+                    android:text="100 Points"/>
+
+
+                <Button
+                    android:layout_marginLeft="1dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:layout_weight="1"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbuttonbg"
+                    android:drawableLeft="@drawable/ic_share_white_24dp"
+                    android:gravity="center|center_vertical"
+                    android:text="Share"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

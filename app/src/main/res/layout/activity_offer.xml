@@ -35,7 +35,7 @@
         android:src="@drawable/ic_filter_white_24dp"
         app:layout_anchor="@+id/my_recycler_view"
         app:layout_anchorGravity="bottom|right"
-        app:backgroundTint="#121121"
+        app:backgroundTint="#A4C639"
         android:onClick="goToCategoryList"/>
 
 
