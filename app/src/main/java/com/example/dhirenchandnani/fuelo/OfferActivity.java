@@ -10,14 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import org.apache.http.annotation.Obsolete;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Iterator;
 
 import static com.example.dhirenchandnani.fuelo.R.styleable.View;
@@ -28,6 +31,8 @@ public class OfferActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Config config;
+    String checked_values = "";
+    int cv_length = 0;
 
 
     @Override
@@ -43,7 +48,16 @@ public class OfferActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+//       here
 
+        Intent filteredIntent = getIntent();
+        if(filteredIntent.hasExtra("FILTER")){
+            checked_values = filteredIntent.getStringExtra("FILTER");
+            cv_length = filteredIntent.getIntExtra("CVLength",0);
+        }
+
+
+//      to here
 
         getData();
     }
@@ -70,7 +84,25 @@ public class OfferActivity extends AppCompatActivity {
                 BufferedReader bufferedReader = null;
                 try {
                     URL url = new URL(Config.GET_URL);
+
+                    // here
+
+                    String data  = URLEncoder.encode("checked_values", "UTF-8") + "=" + URLEncoder.encode(checked_values, "UTF-8");
+                    data += "&" + URLEncoder.encode("cv_length", "UTF-8") + "=" + URLEncoder.encode(cv_length+"", "UTF-8");
+
+                    // to here
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+                    //here
+                    con.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+
+                    wr.write( data );
+                    wr.flush();
+
+                    //to here
+
+
                     StringBuilder sb = new StringBuilder();
 
                     bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -202,6 +234,16 @@ public class OfferActivity extends AppCompatActivity {
     public void goToCategoryList(View view){
         Intent intent = new Intent(this,ListCategoriesActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(getApplicationContext(),NavDrawerActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+        finish();
     }
 
 }

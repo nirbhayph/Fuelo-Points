@@ -1,10 +1,16 @@
 package com.example.dhirenchandnani.fuelo;
 
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +33,9 @@ public class ListCategoriesActivity extends AppCompatActivity implements BaseSli
 
     public String[] category_list;
     private SliderLayout mDemoSlider;
+    String checked_values = "";
+    ListView listView;
+    public static final String CV = "FILTER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,10 +139,52 @@ public class ListCategoriesActivity extends AppCompatActivity implements BaseSli
 
     public void showData(){
 
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, category_list);
-        ListView listView = (ListView) findViewById(R.id.list_category);
+                android.R.layout.simple_list_item_multiple_choice, category_list);
+        listView = (ListView) findViewById(R.id.list_category);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("IN check","Listener");
+
+
+
+
+            }
+        });
+
+    }
+
+    public void filteredResults(View view){
+
+        SparseBooleanArray sparseBooleanArray = listView.getCheckedItemPositions();
+
+        int i = 0;
+        while (i<sparseBooleanArray.size()){
+            if(sparseBooleanArray.valueAt(i)){
+                checked_values = checked_values + category_list[sparseBooleanArray.keyAt(i)]+"////";
+            }
+            i++;
+        }
+
+
+        String check_val = checked_values;
+
+        check_val = check_val.replaceAll("////",",  ");
+        check_val = check_val.replaceAll(",  $", "");
+
+
+        Toast.makeText(this,check_val,Toast.LENGTH_SHORT).show();
+
+        Intent filteredIntent = new Intent(this,OfferActivity.class);
+        filteredIntent.putExtra(CV,checked_values);
+        filteredIntent.putExtra("CVLength",i);
+        startActivity(filteredIntent);
+
     }
 
     private void parseJSON(String json){
