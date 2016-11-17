@@ -6,6 +6,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="points_display">%s Points</string>
+
     <string name="action_settings">Settings</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
@@ -98,4 +100,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_offer">OfferActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
 </resources>

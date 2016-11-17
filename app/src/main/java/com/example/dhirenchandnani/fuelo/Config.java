@@ -12,6 +12,7 @@ public class Config {
     public static String[] codes;
     public static String[] turls;
     public static String[] category_list;
+    public static String[] points;
 
 
     public static final String GET_URL = "http://109.73.164.163/FueloPoints/server_files/recieveCoupons.php";
@@ -22,6 +23,7 @@ public class Config {
     public static final String TAG_CATEGORY = "Category";
     public static final String TAG_CODE = "Type_Value";
     public static final String TAG_TURL = "Url";
+    public static final String TAG_POINTS = "Points";
 
 
 
@@ -35,5 +37,6 @@ public class Config {
         codes = new String[i];
         turls = new String[i];
         category_list = new String[i];
+        points = new String[i];
     }
 }

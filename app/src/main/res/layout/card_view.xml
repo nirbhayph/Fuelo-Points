@@ -92,7 +92,8 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:textColor="#fff"
-                    android:text="100 Points"/>
+                    android:text="100 Points"
+                    android:id="@+id/button_points"/>
 
 
                 <Button

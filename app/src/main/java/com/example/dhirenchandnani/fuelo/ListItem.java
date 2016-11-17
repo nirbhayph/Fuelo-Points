@@ -13,6 +13,7 @@ public class ListItem {
     private String category;
     private String code;
     private String turl;
+    private String point;
 
 
     public String getName() {
@@ -70,6 +71,10 @@ public class ListItem {
     public void setTUrl(String turl) {
         this.turl = turl;
     }
+
+    public String getPoint(){ return point; }
+
+    public void setPoint(String point){ this.point = point; }
 
 
 

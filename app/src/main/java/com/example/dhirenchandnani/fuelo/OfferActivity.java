@@ -39,11 +39,11 @@ public class OfferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -126,7 +126,7 @@ public class OfferActivity extends AppCompatActivity {
     }
 
     public void showData(){
-        mAdapter = new MyAdapter(Config.names,Config.titles, Config.ids);
+        mAdapter = new MyAdapter(OfferActivity.this, Config.names,Config.titles, Config.ids, Config.points,Config.turls);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -149,6 +149,9 @@ public class OfferActivity extends AppCompatActivity {
                 Config.codes[i] = getCode(k);
                 Config.turls[i] = getTUrl(k);
                 Config.names[i] = getName(k);
+
+                Config.points[i] = getPoints(k);
+
             }
 
         } catch (JSONException e) {
@@ -172,11 +175,22 @@ public class OfferActivity extends AppCompatActivity {
         String title = null;
         try {
             title = j.getString(Config.TAG_TITLE);
-           
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return title;
+    }
+
+    private String getPoints(JSONObject j){
+        String point = null;
+        try {
+            point = j.getString(Config.TAG_POINTS);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return point;
     }
 
     private String getIds(JSONObject j){
@@ -245,5 +259,7 @@ public class OfferActivity extends AppCompatActivity {
 
         finish();
     }
+
+
 
 }
