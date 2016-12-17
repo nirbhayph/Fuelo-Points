@@ -8,18 +8,12 @@
     tools:context="com.example.dhirenchandnani.fuelo.MapsWebViewActivity">
 
     <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapView"
+        android:id="@+id/navMapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         mapbox:style_url="mapbox://styles/mapbox/dark-v9"
-        mapbox:zoom="11">
+        mapbox:zoom="15">
 
-
-        <Button
-            android:text="Start Navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnNav" />
     </com.mapbox.mapboxsdk.maps.MapView>
 
 </RelativeLayout>

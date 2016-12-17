@@ -53,7 +53,6 @@ public class WebViewActivity extends AppCompatActivity {
             view.setVisibility(View.VISIBLE);
             pbar.setVisibility(View.GONE);
 
-
         }
 
     }

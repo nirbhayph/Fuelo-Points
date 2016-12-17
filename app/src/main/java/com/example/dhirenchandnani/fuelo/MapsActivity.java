@@ -186,6 +186,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         intent.putExtra("Slong",marker.getPosition().longitude);
                         intent.putExtra("Dlat",MapsActivity.lati);
                         intent.putExtra("Dlong",MapsActivity.longi);
+                        intent.putExtra(Dist_Bet,results[0]+"");
 
                         startActivity(intent);
                     }
@@ -464,7 +465,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
         Toast.makeText(MapsActivity.this,"Your Current Location", Toast.LENGTH_LONG).show();
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));

@@ -43,7 +43,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapsWebViewActivity extends AppCompatActivity {
+public class NavigationModeActivity extends AppCompatActivity {
 
 
     private static final String TAG = "DirectionsActivity";
@@ -56,6 +56,8 @@ public class MapsWebViewActivity extends AppCompatActivity {
     String DistBet="";
     int k=0;
     Button btn;
+    private LocationServices locationServices;
+    private static final int PERMISSIONS_LOCATION = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class MapsWebViewActivity extends AppCompatActivity {
         Intent mapsIntent = getIntent();
 
 
-        DistBet = mapsIntent.getStringExtra(MapsActivity.Dist_Bet);
+
 
 
         // Mapbox access token is configured here. This needs to be called either in your application
@@ -72,17 +74,19 @@ public class MapsWebViewActivity extends AppCompatActivity {
         MapboxAccountManager.start(this, MAPBOX_ACCESS_TOKEN);
 
         // This contains the MapView in XML and needs to be called after the account manager
-        setContentView(R.layout.activity_maps_web_view);
+        setContentView(R.layout.activity_nav_mode);
 
-            // Alhambra landmark in Granada, Spain.
-        final Position origin = Position.fromCoordinates(mapsIntent.getDoubleExtra("Slong",0.0),mapsIntent.getDoubleExtra("Slat",0.0));
+        locationServices = LocationServices.getLocationServices(NavigationModeActivity.this);
+
+        // Alhambra landmark in Granada, Spain.
+        final Position origin = Position.fromCoordinates(mapsIntent.getDoubleExtra("Olong",0.0),mapsIntent.getDoubleExtra("Olat",0.0));
 
         // Plaza del Triunfo in Granada, Spain.
-        final Position destination = Position.fromCoordinates(mapsIntent.getDoubleExtra("Dlong",0.0),mapsIntent.getDoubleExtra("Dlat",0.0));
+        final Position destination = Position.fromCoordinates(mapsIntent.getDoubleExtra("Deslong",0.0),mapsIntent.getDoubleExtra("Deslat",0.0));
 
 
         // Setup the MapView
-        mapView = (MapView) findViewById(R.id.mapView);
+        mapView = (MapView) findViewById(R.id.navMapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -90,7 +94,15 @@ public class MapsWebViewActivity extends AppCompatActivity {
                 map = mapboxMap;
 
 
-                int zoomDist = (int)Float.parseFloat(DistBet);
+                if (!locationServices.areLocationPermissionsGranted()) {
+                    ActivityCompat.requestPermissions(NavigationModeActivity.this, new String[]{
+                            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_LOCATION);
+                } else {
+                    enableLocationTracking();
+                }
+
+//                int zoomDist = (int)Float.parseFloat(DistBet);
                 // Add origin and destination to the map
                 mapboxMap.addMarker(new MarkerOptions()
                         .position(new LatLng(origin.getLatitude(), origin.getLongitude()))
@@ -98,23 +110,23 @@ public class MapsWebViewActivity extends AppCompatActivity {
                         .snippet("Alhambra"));
                 Log.d("ORIGINLAT",origin.getLatitude()+"");
                 Log.d("ORIGINLONG",origin.getLongitude()+"");
-                mapboxMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(destination.getLatitude(), destination.getLongitude()))
-                        .title("Destination")
-                        .snippet("Plaza del Triunfo"));
-                if(zoomDist<1128)
-                    k=14;
-                else if((zoomDist>1128)&&(zoomDist<2256))
-                    k=13;
-                else if((zoomDist>2256)&&(zoomDist<4513))
-                    k=12;
-                else if((zoomDist>4513)&&(zoomDist<9027))
-                    k=11;
-                else if((zoomDist>9027)&&(zoomDist<18055))
-                    k=10;
-
-                Log.d("ZoomDist:",zoomDist+"");
-                Log.d("K=",k+"");
+//                mapboxMap.addMarker(new MarkerOptions()
+//                        .position(new LatLng(destination.getLatitude(), destination.getLongitude()))
+//                        .title("Destination")
+//                        .snippet("Plaza del Triunfo"));
+//                if(zoomDist<1128)
+//                    k=14;
+//                else if((zoomDist>1128)&&(zoomDist<2256))
+//                    k=13;
+//                else if((zoomDist>2256)&&(zoomDist<4513))
+//                    k=12;
+//                else if((zoomDist>4513)&&(zoomDist<9027))
+//                    k=11;
+//                else if((zoomDist>9027)&&(zoomDist<18055))
+//                    k=10;
+//
+//                Log.d("ZoomDist:",zoomDist+"");
+//                Log.d("K=",k+"");
 
 //                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
 //                    @Override
@@ -130,30 +142,30 @@ public class MapsWebViewActivity extends AppCompatActivity {
 //                });
 
 
-
-                CameraPosition position = new CameraPosition.Builder()
-                        .target(new LatLng(destination.getLatitude(),destination.getLongitude())) // Sets the new camera position
-                        .zoom(k) // Sets the zoom
-                        .bearing(180) // Rotate the camera
-                        .tilt(30) // Set the camera tilt
-                        .build(); // Creates a CameraPosition from the builder
-
-                mapboxMap.animateCamera(CameraUpdateFactory
-                        .newCameraPosition(position), 5000);
-
-                btn = (Button)findViewById(R.id.btnNav);
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent intent2 = new Intent(MapsWebViewActivity.this, NavigationModeActivity.class);
-                        intent2.putExtra("Olat",origin.getLatitude());
-                        intent2.putExtra("Olong",origin.getLongitude());
-                        intent2.putExtra("Deslat",destination.getLatitude());
-                        intent2.putExtra("Deslong",destination.getLongitude());
-                        startActivity(intent2);
-                    }
-                });
+//
+//                CameraPosition position = new CameraPosition.Builder()
+//                        .target(new LatLng(destination.getLatitude(),destination.getLongitude())) // Sets the new camera position
+//                        .zoom(k) // Sets the zoom
+//                        .bearing(180) // Rotate the camera
+//                        .tilt(30) // Set the camera tilt
+//                        .build(); // Creates a CameraPosition from the builder
+//
+//                mapboxMap.animateCamera(CameraUpdateFactory
+//                        .newCameraPosition(position), 5000);
+//
+//                btn = (Button)findViewById(R.id.btnNav);
+//                btn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//                        Intent intent2 = new Intent(MapsWebViewActivity.this, NavigationModeActivity.class);
+//                        intent2.putExtra("Olat",origin.getLatitude());
+//                        intent2.putExtra("Olong",origin.getLongitude());
+//                        intent2.putExtra("Deslat",destination.getLatitude());
+//                        intent2.putExtra("Deslong",destination.getLongitude());
+//                        startActivity(intent2);
+//                    }
+//                });
 
                 // Get route from API
                 try {
@@ -193,10 +205,10 @@ public class MapsWebViewActivity extends AppCompatActivity {
                 // Print some info about the route
                 currentRoute = response.body().getRoutes().get(0);
                 Log.d(TAG, "Distance: " + currentRoute.getDistance());
-                Toast.makeText(
-                        MapsWebViewActivity.this,
-                        "Route is " + currentRoute.getDistance() + " meters long.",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(
+//                        MapsWebViewActivity.this,
+//                        "Route is " + currentRoute.getDistance() + " meters long.",
+//                        Toast.LENGTH_SHORT).show();
 
                 // Draw the route on the map
                 drawRoute(currentRoute);
@@ -205,7 +217,7 @@ public class MapsWebViewActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<DirectionsResponse> call, Throwable throwable) {
                 Log.e(TAG, "Error: " + throwable.getMessage());
-                Toast.makeText(MapsWebViewActivity.this, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MapsWebViewActivity.this, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -255,6 +267,26 @@ public class MapsWebViewActivity extends AppCompatActivity {
             client.cancelCall();
         }
         mapView.onDestroy();
+    }
+
+    private void enableLocationTracking() {
+
+        // Disable tracking dismiss on map gesture
+        map.getTrackingSettings().setDismissAllTrackingOnGesture(false);
+
+        // Enable location and bearing tracking
+        map.getTrackingSettings().setMyLocationTrackingMode(MyLocationTracking.TRACKING_FOLLOW);
+        map.getTrackingSettings().setMyBearingTrackingMode(MyBearingTracking.COMPASS);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+            int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSIONS_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                enableLocationTracking();
+            }
+        }
     }
 
     @Override
