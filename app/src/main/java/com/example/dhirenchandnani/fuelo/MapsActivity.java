@@ -12,6 +12,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -171,13 +172,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.d("INTENTORIGIN",marker.getPosition().latitude+"");
 
-                        Intent mapintent = new Intent(MapsActivity.this, MarkerInfoActivity.class);
-                        mapintent.putExtra(CURRENT_LOCATION,mLastLocation);
-                        mapintent.putExtra(MARKER_TITLE,marker.getTitle());
-                        mapintent.putExtra(MARKER_POSITION,marker.getPosition());
-                        mapintent.putExtra(Dist_Bet,results[0]+"");
-                        startActivity(mapintent);
+//                        Intent mapintent = new Intent(MapsActivity.this, MarkerInfoActivity.class);
+//                        mapintent.putExtra(CURRENT_LOCATION,mLastLocation);
+//                        mapintent.putExtra(MARKER_TITLE,marker.getTitle());
+//                        mapintent.putExtra(MARKER_POSITION,marker.getPosition());
+//                        mapintent.putExtra(Dist_Bet,results[0]+"");
+//                        startActivity(mapintent);
+
+                        Intent intent = new Intent(MapsActivity.this, MapsWebViewActivity.class);
+                        intent.putExtra("Slat",marker.getPosition().latitude);
+                        intent.putExtra("Slong",marker.getPosition().longitude);
+                        intent.putExtra("Dlat",MapsActivity.lati);
+                        intent.putExtra("Dlong",MapsActivity.longi);
+
+                        startActivity(intent);
                     }
                 });
                 b1.setOnClickListener(new View.OnClickListener() {

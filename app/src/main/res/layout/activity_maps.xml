@@ -130,9 +130,6 @@
             android:textColor="#fff"
             android:textStyle="bold"
             android:clickable="false"
-
-
-
             />
 
     </LinearLayout>

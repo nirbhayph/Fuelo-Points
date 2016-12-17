@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+repositories{
+    mavenCentral()
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -9,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dhirenchandnani.fuelo"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -39,6 +43,9 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:4.2.0@aar'){
+        transitive=true
+    }
 
 
     testCompile 'junit:junit:4.12'
