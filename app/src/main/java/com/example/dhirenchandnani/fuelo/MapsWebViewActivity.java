@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
@@ -73,6 +74,14 @@ public class MapsWebViewActivity extends AppCompatActivity {
 
         // This contains the MapView in XML and needs to be called after the account manager
         setContentView(R.layout.activity_maps_web_view);
+
+//        Handler handler = new Handler();
+//
+//        handler.postDelayed(new Runnable() {
+//            public void run() {
+//                finish();
+//            }
+//        }, 100);
 
             // Alhambra landmark in Granada, Spain.
         final Position origin = Position.fromCoordinates(mapsIntent.getDoubleExtra("Slong",0.0),mapsIntent.getDoubleExtra("Slat",0.0));
