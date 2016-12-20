@@ -54,7 +54,7 @@ public class MapsWebViewActivity extends AppCompatActivity {
     private DirectionsRoute currentRoute;
     private MapboxDirections client;
     public String MAPBOX_ACCESS_TOKEN = "pk.eyJ1Ijoia3VuYWw0IiwiYSI6ImNpd3J4anp4dzEyNGwyb3BpeWFzcGxpNzcifQ.G6XpIffi1IVmdQgQRPxp_w";
-    String DistBet="";
+    String DistBet="", Marker_title = "";
     int k=0;
     Button btn;
 
@@ -66,6 +66,7 @@ public class MapsWebViewActivity extends AppCompatActivity {
 
 
         DistBet = mapsIntent.getStringExtra(MapsActivity.Dist_Bet);
+        Marker_title = mapsIntent.getStringExtra(MapsActivity.MARKER_TITLE);
 
 
         // Mapbox access token is configured here. This needs to be called either in your application
@@ -104,13 +105,13 @@ public class MapsWebViewActivity extends AppCompatActivity {
                 mapboxMap.addMarker(new MarkerOptions()
                         .position(new LatLng(origin.getLatitude(), origin.getLongitude()))
                         .title("Origin")
-                        .snippet("Alhambra"));
+                        .snippet("You"));
                 Log.d("ORIGINLAT",origin.getLatitude()+"");
                 Log.d("ORIGINLONG",origin.getLongitude()+"");
                 mapboxMap.addMarker(new MarkerOptions()
                         .position(new LatLng(destination.getLatitude(), destination.getLongitude()))
                         .title("Destination")
-                        .snippet("Plaza del Triunfo"));
+                        .snippet(Marker_title));
                 if(zoomDist<1128)
                     k=14;
                 else if((zoomDist>1128)&&(zoomDist<2256))
@@ -141,7 +142,7 @@ public class MapsWebViewActivity extends AppCompatActivity {
 
 
                 CameraPosition position = new CameraPosition.Builder()
-                        .target(new LatLng(destination.getLatitude(),destination.getLongitude())) // Sets the new camera position
+                        .target(new LatLng(origin.getLatitude(),origin.getLongitude())) // Sets the new camera position
                         .zoom(k) // Sets the zoom
                         .bearing(180) // Rotate the camera
                         .tilt(30) // Set the camera tilt
@@ -160,6 +161,7 @@ public class MapsWebViewActivity extends AppCompatActivity {
                         intent2.putExtra("Olong",origin.getLongitude());
                         intent2.putExtra("Deslat",destination.getLatitude());
                         intent2.putExtra("Deslong",destination.getLongitude());
+                        intent2.putExtra("TITLE",Marker_title);
                         startActivity(intent2);
                     }
                 });

@@ -48,8 +48,10 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
     public static final String Time="Time";
     public static final String Litres="Litres";
     public static final String CAR="Cars";
+    public static final String PetrolName="PetrolName";
     public static String resultsMain = "DC_KT";
     public static String[] results,results1,results2, results3;
+    String Marker_title="";
 
 
     @Override
@@ -97,12 +99,17 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_window);
 
+        Intent intent = getIntent();
+
+        Marker_title = intent.getStringExtra("TITLE");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         final EditText form_BNo = (EditText)findViewById(R.id.billNo);
         final EditText form_petrol_amount = (EditText)findViewById(R.id.petrolAmnt);
-        final EditText form_date = (EditText)findViewById(R.id.editText3);
-        final EditText form_time = (EditText)findViewById(R.id.editText4);
+        final TextView form_date = (TextView)findViewById(R.id.editText3);
+        final TextView form_time = (TextView)findViewById(R.id.editText4);
         final EditText form_nol = (EditText)findViewById(R.id.nOL);
+        final TextView form_pName = (TextView)findViewById(R.id.petrolName);
 
 //        new SpinnerDetails(this).execute();
 
@@ -121,6 +128,7 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
 
         form_date.setText(date);
         form_time.setText(time);
+        form_pName.setText(Marker_title);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +141,7 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
                                      String pa = form_petrol_amount.getText().toString();
                                      String noL = form_nol.getText().toString();
                                      String carV = spinner.getSelectedItem().toString();
+                                     String pName = form_pName.getText().toString();
 
                                      if(!bn.equals("") && !pa.equals("") && !noL.equals("")){
 
@@ -144,6 +153,7 @@ public class FormActivity extends AppCompatActivity implements SpinnerDetails.As
                                      intent2.putExtra(Date,n_date);
                                      intent2.putExtra(Time,n_time);
                                      intent2.putExtra(Litres,noL);
+                                     intent2.putExtra(PetrolName, pName);
                                      startActivity(intent2);
                                      }
 

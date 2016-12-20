@@ -32,7 +32,7 @@ public class ViewFormActivity extends AppCompatActivity {
     FloatingActionButton iv_photo;
     ImageView expanded_image;
 
-    String billNo = "", petrolAmnt = "", date = "", time = "", nol="",carV="";
+    String billNo = "", petrolAmnt = "", date = "", time = "", nol="",carV="", petrolName="";
 
 
     @Override
@@ -51,6 +51,8 @@ public class ViewFormActivity extends AppCompatActivity {
         time = intent3.getStringExtra(FormActivity.Time);
         nol = intent3.getStringExtra(FormActivity.Litres);
         carV = intent3.getStringExtra(FormActivity.CAR);
+        petrolName = intent3.getStringExtra(FormActivity.PetrolName);
+
 
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -75,6 +77,7 @@ public class ViewFormActivity extends AppCompatActivity {
         TextView v_time = (TextView) findViewById(R.id.timeView);
         TextView v_nol = (TextView) findViewById(R.id.v_nol);
         TextView carView = (TextView) findViewById(R.id.carView);
+        TextView pName = (TextView)findViewById(R.id.pnView);
 
         expanded_image = (ImageView) findViewById(R.id.expanded_image);
 
@@ -86,6 +89,7 @@ public class ViewFormActivity extends AppCompatActivity {
         pa.setText("Rs. " + petrolAmnt);
         v_nol.setText(" " + nol+" Litres/Kgs");
         carView.setText(""+carV);
+        pName.setText(""+petrolName);
 
     }
 

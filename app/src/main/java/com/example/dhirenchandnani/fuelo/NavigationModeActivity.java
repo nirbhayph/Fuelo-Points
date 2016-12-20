@@ -18,7 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
@@ -89,7 +91,8 @@ public class NavigationModeActivity extends AppCompatActivity {
     private boolean routeFinished = false;
     private boolean reRoute = false;
     private RouteUtils routeUtils;
-    LocationListener locationListener;
+    Button btn;
+    String Marker_title="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +105,24 @@ public class NavigationModeActivity extends AppCompatActivity {
         // This contains the MapView in XML and needs to be called after the account manager
         setContentView(R.layout.activity_nav_mode);
 
+        final Intent mapsIntent = getIntent();
+
+        Marker_title = mapsIntent.getStringExtra("TITLE");
+
+
+        btn = (Button)findViewById(R.id.nav_UB);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(NavigationModeActivity.this, FormActivity.class);
+                i.putExtra("TITLE",Marker_title);
+                startActivity(i);
+            }
+        });
+
         locationServices = LocationServices.getLocationServices(NavigationModeActivity.this);
 
-        final Intent mapsIntent = getIntent();
+
 
         mapView = (MapView) findViewById(R.id.navMapView);
         mapView.onCreate(savedInstanceState);
@@ -159,7 +177,7 @@ public class NavigationModeActivity extends AppCompatActivity {
                         try {
                             getRoute(
                                     Position.fromCoordinates(car.getPosition().getLongitude(), car.getPosition().getLatitude()),
-                                    Position.fromCoordinates(destination.getLongitude(), destination.getLatitude())
+                                            Position.fromCoordinates(destination.getLongitude(), destination.getLatitude())
                             );
                         } catch (ServicesException servicesException) {
                             servicesException.printStackTrace();
@@ -286,7 +304,7 @@ public class NavigationModeActivity extends AppCompatActivity {
     private void addCar(LatLng position) {
         // Using a custom car icon for marker.
         IconFactory iconFactory = IconFactory.getInstance(NavigationModeActivity.this);
-        Drawable iconDrawable = ContextCompat.getDrawable(NavigationModeActivity.this, R.drawable.ic_car_top);
+        Drawable iconDrawable = ContextCompat.getDrawable(NavigationModeActivity.this, R.drawable.ic_gps_symbol);
         Icon icon = iconFactory.fromDrawable(iconDrawable);
 
         // Add the car marker to the map.

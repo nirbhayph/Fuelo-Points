@@ -182,12 +182,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                        startActivity(mapintent);
 
                         Intent intent = new Intent(MapsActivity.this, MapsWebViewActivity.class);
-                        intent.putExtra("Slat",marker.getPosition().latitude);
-                        intent.putExtra("Slong",marker.getPosition().longitude);
-                        intent.putExtra("Dlat",MapsActivity.lati);
-                        intent.putExtra("Dlong",MapsActivity.longi);
+                        intent.putExtra("Dlat",marker.getPosition().latitude);
+                        intent.putExtra("Dlong",marker.getPosition().longitude);
+                        intent.putExtra("Slat",MapsActivity.lati);
+                        intent.putExtra("Slong",MapsActivity.longi);
                         intent.putExtra(Dist_Bet,results[0]+"");
-
+                        intent.putExtra(MARKER_TITLE,marker.getTitle());
                         startActivity(intent);
                     }
                 });
@@ -196,6 +196,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     public void onClick(View v) {
 
                         Intent mapintent = new Intent(MapsActivity.this, FormActivity.class);
+                        mapintent.putExtra(MARKER_TITLE, marker.getTitle());
                         startActivity(mapintent);
                     }
                 });

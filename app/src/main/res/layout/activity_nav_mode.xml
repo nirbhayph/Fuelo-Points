@@ -18,13 +18,7 @@
             android:text="Upload Bill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2" />
-
-        <Chronometer
-            android:layout_width="68dp"
-            android:layout_height="68dp"
-            android:id="@+id/chronometer2"
-            android:layout_gravity="bottom|end"/>
+            android:id="@+id/nav_UB" />
 
     </com.mapbox.mapboxsdk.maps.MapView>
 

@@ -23,11 +23,11 @@
             <LinearLayout
                 android:id="@+id/viewA"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
                 android:layout_weight="0.3"
                 android:background="@drawable/bg_x3"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_height="150dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:textColorLink="#fff"
                         android:layout_weight="0.4"
@@ -75,7 +75,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/buttonbg"
                         android:theme="@style/MyEditTextTheme"/>
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:textColorLink="#fff"
                         android:layout_height="50dp"
@@ -96,6 +96,22 @@
 
 
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textColorLink="#fff"
+                    android:layout_height="50dp"
+                    android:id="@+id/petrolName"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#ffffff"
+                    android:inputType="number"
+                    android:hint="Petrol Name"
+                    android:gravity="center"
+                    android:textColorHint="#fff"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttonbg"
+                    android:theme="@style/MyEditTextTheme"/>
 
                 <EditText
                     android:layout_width="match_parent"
