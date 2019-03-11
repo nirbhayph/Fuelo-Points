@@ -1,2 +1,4 @@
 # Fuelo-Points
 Fuelo Points is an android application which provides users with discounts and cash backs based on the amount of fuel they fill in their vehicles. As soon as you login to the app you can view the nearest fuel stations near you. You can select any one of them and the app will start its own navigation from your location to the fuel station. As soon as you reach the station you can fill in the details of the amount of fuel you filled in the app. You also need to send a picture of the receipt of your fuel so the app can verify that the fuel filled was by you. After verification, the app will provide cashbacks and discounts on various products and deals. Google Distance API and Map box have been used in the app to make a custom navigation.
+
+Other creators - Dhiren Chandnani, Kunal Tolani and Aamir Mulani
